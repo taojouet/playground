@@ -22,12 +22,10 @@ export default function CustomCursor() {
                     return;
                 cursorRef.current.classList.remove("expand");
             }, 500)
-        })
+        });
     }, []);
     return (
-        <>
-            <div className='cursor' ref={cursorRef}>
-            </div>
-        </>
+        <div className='cursor' ref={cursorRef}>
+        </div>
     )
 }
