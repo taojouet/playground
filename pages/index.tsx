@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import CustomCursor from '../components/cursor'
+
 
 export default function Home() {
   return (
@@ -12,6 +14,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <CustomCursor />
         <h1 className={styles.title}>
           Welcome to my playground!
         </h1>
