@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Detect if the user is on a smartphone or a normal screen, if it's a phone show the mouse else don't show it */
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+}
+
 html,
 body {
   cursor: none;
@@ -18,7 +25,6 @@ a {
 
 * {
   box-sizing: border-box;
-  cursor: none;
 }
 
 .cursor {
