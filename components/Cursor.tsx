@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 
 export default function CustomCursor() {
-    const cursorRef = useRef(null)
+    const cursorRef: any = useRef(null)
     useEffect(() => {
         if (cursorRef.current == null || cursorRef == null)
             return;
