@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       <body>
         <CustomCursor />
-        <main className="min-h-screen p-64 flex-1 justify-center items-center bg-dark-blue">
+        <main className="min-h-screen p-64 flex-1 justify-center items-center bg-slate-400">
           <div className="container mx-auto p-4">
             <div className="flex items-center">
               <Image src={profilePic} alt="Picture of the author" width={5763} height={3842} className="w-1/3 mr-4" />
