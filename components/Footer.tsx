@@ -14,7 +14,7 @@ export default function Footer() {
                 <a href="https://www.linkedin.com/in/taojouet/" target="_blank">
                     <Image
                         src={linkedin}
-                        alt="Github page of Tao Jouet"
+                        alt="Linkedin page of Tao Jouet"
                         width={32} height={32}
                     />
                 </a>
