@@ -1,5 +1,8 @@
 import Image from 'next/image'
 
+import github from '../public/logo/github.svg'
+import linkedin from '../public/logo/linkedin.svg'
+
 export default function Footer() {
 
 
@@ -10,7 +13,7 @@ export default function Footer() {
 
                 <a href="https://www.linkedin.com/in/taojouet/" target="_blank">
                     <Image
-                        src="/../public/logo/linkedin.png"
+                        src={linkedin}
                         alt="Github page of Tao Jouet"
                         width={32} height={32}
                     />
@@ -19,7 +22,7 @@ export default function Footer() {
 
                 <a href="https://github.com/taojouet" target="_blank">
                     <Image
-                        src="/../public/logo/github.png"
+                        src={github}
                         alt="Github page of Tao Jouet"
                         width={32} height={32}
                     />
