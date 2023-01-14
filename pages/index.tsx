@@ -1,5 +1,5 @@
 import CustomCursor from '../components/Cursor'
-import TaoJouet from '../components/TaoJouet'
+import Presentation from '../components/Presentation'
 // import CV from '../components/CV'
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
 
           {/* FIRST SECTION START */}
 
-          <TaoJouet />
+          <Presentation />
           
           {/* FIRST SECTION END */}
 

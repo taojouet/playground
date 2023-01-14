@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import profilePic from '../public/img/tao.png';
 
-export default function TaoJouet() {
+export default function Presentation() {
     return (
         <div className="min-h-screen p-64 flex-1 justify-center items-center bg-slate-400">
             <div className="container mx-auto p-4">
