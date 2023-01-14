@@ -1,6 +1,6 @@
 import CustomCursor from '../components/Cursor'
 import TaoJouet from '../components/TaoJouet'
-import CV from '../components/CV'
+// import CV from '../components/CV'
 
 export default function Home() {
   return (
