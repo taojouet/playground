@@ -10,8 +10,9 @@ export default function CV() {
                 <div className="cv__content__cards">
                     <ResumeCard
                         url={"https://taojouet.com"}
-                        name="TOTO"
-                    />
+                        name={"TOTO"} 
+                        date={""} 
+                        description={""}                    />
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import CustomCursor from '../components/Cursor'
 import Presentation from '../components/Presentation'
+import Resume from '../components/Resume'
 // import CV from '../components/CV'
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
           {/* FIRST SECTION START */}
 
           <Presentation />
+          <Resume/>
           
           {/* FIRST SECTION END */}
 
