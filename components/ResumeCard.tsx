@@ -3,23 +3,29 @@ export default function ResumeCard(
         name: string;
         url: string;
         date: string;
-        description: string;
+        description: Array<string>;
     }
 ) {
     return (
-        <div className="cv-card">
-            <div className="cv-card__header">
-                <div className="cv-card__header__title">
+        <div className="">
+            <div className="">
+                <div className="">
                     <h3>{props.name}</h3>
-                    <p>at <a href={props.url}>Vegvesen</a></p>
+                    <p>at <a href={props.url} className="">Vegvesen</a></p>
                 </div>
-                <div className="cv-card__header__date">
+                <div className="">
                     <p>{props.date}</p>
                 </div>
             </div>
-            <div className="cv-card__content">
+            <div className="">
                 <p>
-                    {props.description}
+                    {
+                        props.description.map((line: string) => (
+                                <span>{line}<br /></span>    
+                            
+                            
+                        ))
+                    }
                 </p>
             </div>
         </div>

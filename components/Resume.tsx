@@ -10,9 +10,15 @@ export default function CV() {
                 <div className="cv__content__cards">
                     <ResumeCard
                         url={"https://taojouet.com"}
-                        name={"TOTO"} 
-                        date={""} 
-                        description={""}                    />
+                        name={"nstitut d'Electronique et des Systèmes Stagiaire projet"}
+                        date={""}
+                        description={[
+                            `Conception d'un espace immersif dans le cadre du projet HUT (Human at Home projecT).`, 
+                            `- Conception 3D`,
+                            `- Chiffrage`,
+                            `- Programmation électronique pour commander différents éléments`,
+                            `- Conception d'une interface "homme machine"`
+                        ]} />
                 </div>
             </div>
         </div>
