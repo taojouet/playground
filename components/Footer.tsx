@@ -1,7 +1,9 @@
 import Image from 'next/image'
 
-import github from '../public/logo/github.svg'
 import linkedin from '../public/logo/linkedin.svg'
+import mailIcon from '../public/logo/mailIcon.png'
+import github from '../public/logo/github.svg'
+
 
 export default function Footer() {
 
@@ -19,6 +21,13 @@ export default function Footer() {
                     />
                 </a>
 
+                <a href="mailto:contact@taojouet.com" target="_blank">
+                    <Image
+                        src={mailIcon}
+                        alt="Send me an email!"
+                        width={32} height={32}
+                    />
+                </a>
 
                 <a href="https://github.com/taojouet" target="_blank">
                     <Image
