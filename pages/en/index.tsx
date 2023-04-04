@@ -3,6 +3,12 @@ import Presentation from '../../components/Presentation'
 import Resume from '../../components/Resume'
 // import CV from '../components/CV'
 
+/**
+ * 
+ * @returns The home page of the website in English
+ * 
+ */
+
 export default function Home() {
   return (
     <div>
