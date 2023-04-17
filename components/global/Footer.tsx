@@ -1,8 +1,8 @@
 import Image from 'next/image'
 
-import linkedin from '../public/logo/linkedin.svg'
-import mailIcon from '../public/logo/mailIcon.png'
-import github from '../public/logo/github.svg'
+import linkedin from '../../public/logo/linkedin.svg'
+import mailIcon from '../../public/logo/mailIcon.png'
+import github from '../../public/logo/github.svg'
 
 
 export default function Footer() {

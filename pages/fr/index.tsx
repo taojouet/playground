@@ -1,7 +1,9 @@
-import CustomCursor from '../../components/Cursor'
+import CustomCursor from '../../components/global/Cursor'
 import Presentation from '../../components/Presentation'
 import Resume from '../../components/Resume'
 // import CV from '../components/CV'
+
+
 
 /**
  * 

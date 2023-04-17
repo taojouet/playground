@@ -9,7 +9,7 @@ export default function CV() {
             <div className="cv__content">
                 <div className="cv__content__cards">
                     <ResumeCard
-                        url={"https://taojouet.com"}
+                        url={"http://localhost:3000/fr/IES"}
                         name={"nstitut d'Electronique et des Systèmes Stagiaire projet"}
                         date={""}
                         description={[
