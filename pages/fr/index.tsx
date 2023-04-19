@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div>
       <body>
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         <main>
 
           {/* FIRST SECTION START */}

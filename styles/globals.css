@@ -11,7 +11,7 @@
 
 html,
 body {
-  cursor: none;
+  /* cursor: none; */
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -27,7 +27,7 @@ a {
   box-sizing: border-box;
 }
 
-.cursor {
+/* .cursor {
   width: 20px;
   height: 20px;
   border: 1px solid white;
@@ -46,7 +46,7 @@ a {
   opacity: .5;
   top: 7px;
   left: 7px;
-}
+} */
 
 @keyframes cursorAnim {
   0% {
