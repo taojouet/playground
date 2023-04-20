@@ -11,10 +11,7 @@ export default function ResumeCard(
     return (
         <div className="">
             <div className="">
-                <div className="">
-                    <h3>{props.name}</h3>
-                    <p>at <Link href={props.url}>here</Link></p>
-                </div>
+
                 <div className="">
                     <p>{props.date}</p>
                 </div>
@@ -23,12 +20,16 @@ export default function ResumeCard(
                 <p>
                     {
                         props.description.map((line: string) => (
-                                <span>{line}<br /></span>    
-                            
-                            
+                            <span>{line}<br /></span>
+
+
                         ))
                     }
                 </p>
+            </div>
+            <div className="">
+                <h3>{props.name}</h3>
+                <p>at <Link href={props.url}>here</Link></p>
             </div>
         </div>
     );
