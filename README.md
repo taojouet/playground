@@ -13,4 +13,4 @@ Under here you will find the different projects I would love to work on, what is
 
 - My resume
 - The projects I worked on
-- A contact form
+- A contact form 
