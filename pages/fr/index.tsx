@@ -22,7 +22,7 @@ export default function Home() {
 
           <Presentation presentation={`Salut ! Moi c'est Tao, je développe des applications depuis tout petit. Ce site à pour but de présenter mon cv et répertorier les projets sur lesquels j'ai eu la chance de travailler. Je pourrais aussi y partager des choses qui m'interreses.`}/>
 
-          {/* FIRST SECTION END */}
+          {/* FIRST SECTION END */} 
 
 
           {/* SECOND SECTION START */}
