@@ -1,4 +1,4 @@
-This website is made intended to be my playground. This is the place where I will showcase my skills, my projects and if I want to make something on a website I will do it here.
+This website is made intended to be my playground. This is the place where I will showcase my skills, my projects and if I want to make something on a website I will do it here. 
 
 Under here you will find the different projects I would love to work on, what is currently on the website, what I should add, etc
 
