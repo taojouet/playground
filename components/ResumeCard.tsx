@@ -5,7 +5,7 @@ export default function ResumeCard(
         name: string;
         url: string;
         date: string;
-        description: Array<string>;
+        shortDescription: Array<string>;
     }
 ) {
     return (
@@ -19,7 +19,7 @@ export default function ResumeCard(
             <div className="">
                 <p>
                     {
-                        props.description.map((line: string) => (
+                        props.shortDescription.map((line: string) => (
                             <span>{line}<br /></span>
 
 
