@@ -27,7 +27,7 @@ export default function Home() {
           {/* SECOND SECTION START */}
 
           {/* <Resume /> */}
-          
+           
           {/* SECOND SECTION END */}
 
 
