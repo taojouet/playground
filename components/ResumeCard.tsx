@@ -5,7 +5,7 @@ export default function ResumeCard(
         name: string;
         url: string;
         date: string;
-        shortDescription: Array<string>;
+        shortDescription: Array<string>; 
     }
 ) {
     return (
