@@ -1,16 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/en',
-        permanent: true,
-      },
-    ]
-  }
-}
+  output: 'export',
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  images: { unoptimized: true },
+};
 
 module.exports = nextConfig;

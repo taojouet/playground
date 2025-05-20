@@ -1,15 +1,24 @@
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Analytics } from '@vercel/analytics/react';
-import Footer from '../components/global/Footer';
-import Header from '../components/global/Header';
+import { Inter } from 'next/font/google';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import { Toaster } from '@/components/ui/toaster';
+
+const inter = Inter({ subsets: ['latin'] });
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Analytics />
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </>
+    <LanguageProvider>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-grow">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </div>
+      <Toaster />
+    </LanguageProvider>
   );
 }
