@@ -11,15 +11,18 @@ import { ArrowLeft, Calendar, Tag, Code } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+import type { Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 // Composant personnalisé pour les images dans le contenu Markdown
-const MarkdownImage = ({ src, alt }: { src: string; alt: string }) => {
+const MarkdownImage: Components['img'] = (props) => {
+  const { src, alt } = props;
+  if (!src) return null;
   return (
     <div className="my-8 relative w-full aspect-video rounded-lg overflow-hidden">
       <Image
         src={src}
-        alt={alt}
+        alt={alt || ''}
         fill
         className="object-cover"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -29,7 +32,9 @@ const MarkdownImage = ({ src, alt }: { src: string; alt: string }) => {
 };
 
 // Composant personnalisé pour les liens dans le contenu Markdown
-const MarkdownLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+const MarkdownLink: Components['a'] = (props) => {
+  const { href, children } = props;
+  if (!href) return null;
   return (
     <a
       href={href}

@@ -22,7 +22,7 @@ export default function Footer() {
           
           <div className="flex space-x-4">
             <a 
-              href="mailto:tao.jouet@email.com" 
+              href="mailto:contact@taojouet.com" 
               className="text-gray-300 hover:text-white transition-colors"
               aria-label="Email"
             >
