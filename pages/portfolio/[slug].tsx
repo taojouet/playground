@@ -15,7 +15,8 @@ import remarkGfm from 'remark-gfm';
 import { content } from '@/data/content';
 
 // Composant personnalisé pour les images dans le contenu Markdown
-const MarkdownImage = ({ src, alt, ...props }: React.ComponentPropsWithoutRef<'img'>) => {
+const MarkdownImage = (props: React.ComponentPropsWithoutRef<'img'>) => {
+  const { src, alt } = props;
   if (!src) return null;
   return (
     <div className="relative w-full h-[400px] my-8">
@@ -25,17 +26,17 @@ const MarkdownImage = ({ src, alt, ...props }: React.ComponentPropsWithoutRef<'i
         fill
         className="object-cover rounded-lg"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        {...(props as any)}
       />
     </div>
   );
 };
 
 // Composant personnalisé pour les liens dans le contenu Markdown
-const MarkdownLink = ({ href, children, ...props }: React.ComponentPropsWithoutRef<'a'>) => {
+const MarkdownLink = (props: React.ComponentPropsWithoutRef<'a'>) => {
+  const { href, children } = props;
   if (!href) return null;
   return (
-    <Link href={href} className="text-blue-600 hover:text-blue-800 underline" {...props}>
+    <Link href={href} className="text-blue-600 hover:text-blue-800 underline">
       {children}
     </Link>
   );
