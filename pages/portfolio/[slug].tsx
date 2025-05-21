@@ -16,16 +16,16 @@ import { content } from '@/data/content';
 
 // Composant personnalisé pour les images dans le contenu Markdown
 const MarkdownImage = ({ src, alt, ...props }: React.ComponentPropsWithoutRef<'img'>) => {
+  if (!src) return null;
   return (
-    <div className="my-8 relative w-full aspect-video rounded-lg overflow-hidden">
+    <div className="relative w-full h-[400px] my-8">
       <Image
-        src={src || ''}
+        src={src}
         alt={alt || ''}
-        width={1200}
-        height={675}
-        className="object-cover w-full h-full"
-        style={{ width: '100%', height: '100%' }}
-        {...props}
+        fill
+        className="object-cover rounded-lg"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        {...(props as any)}
       />
     </div>
   );
@@ -33,16 +33,11 @@ const MarkdownImage = ({ src, alt, ...props }: React.ComponentPropsWithoutRef<'i
 
 // Composant personnalisé pour les liens dans le contenu Markdown
 const MarkdownLink = ({ href, children, ...props }: React.ComponentPropsWithoutRef<'a'>) => {
+  if (!href) return null;
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-[#3B82F6] hover:text-[#2563EB] underline transition-colors"
-      {...props}
-    >
+    <Link href={href} className="text-blue-600 hover:text-blue-800 underline" {...props}>
       {children}
-    </a>
+    </Link>
   );
 };
 
