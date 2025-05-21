@@ -13,9 +13,10 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { content } from '@/data/content';
+import type { Components } from 'react-markdown';
 
 // Composant personnalisé pour les images dans le contenu Markdown
-const MarkdownImage = (props: React.ComponentPropsWithoutRef<'img'>) => {
+const MarkdownImage: Components['img'] = (props) => {
   const { src, alt } = props;
   if (!src) return null;
   return (
@@ -32,7 +33,7 @@ const MarkdownImage = (props: React.ComponentPropsWithoutRef<'img'>) => {
 };
 
 // Composant personnalisé pour les liens dans le contenu Markdown
-const MarkdownLink = (props: React.ComponentPropsWithoutRef<'a'>) => {
+const MarkdownLink: Components['a'] = (props) => {
   const { href, children } = props;
   if (!href) return null;
   return (
