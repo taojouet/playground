@@ -113,17 +113,19 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {t.featuredProjects.items.map((project, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-text-secondary mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge key={techIndex} variant="secondary">{tech}</Badge>
-                      ))}
+                <Link key={index} href="/portfolio">
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-200 cursor-pointer">
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                      <p className="text-text-secondary mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <Badge key={techIndex} variant="secondary">{tech}</Badge>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
@@ -142,18 +144,20 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {t.services.items.map((service, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <div className="p-6">
-                    <div className="flex items-center gap-3 mb-4">
-                      {index === 0 && <Code className="h-6 w-6 text-[#3B82F6]" />}
-                      {index === 1 && <LineChart className="h-6 w-6 text-[#3B82F6]" />}
-                      {index === 2 && <Lightbulb className="h-6 w-6 text-[#3B82F6]" />}
-                      {index === 3 && <BookOpen className="h-6 w-6 text-[#3B82F6]" />}
-                      <h3 className="text-xl font-semibold">{service.title}</h3>
+                <Link key={index} href="/services">
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-200 cursor-pointer">
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        {index === 0 && <Code className="h-6 w-6 text-[#3B82F6]" />}
+                        {index === 1 && <LineChart className="h-6 w-6 text-[#3B82F6]" />}
+                        {index === 2 && <Lightbulb className="h-6 w-6 text-[#3B82F6]" />}
+                        {index === 3 && <BookOpen className="h-6 w-6 text-[#3B82F6]" />}
+                        <h3 className="text-xl font-semibold">{service.title}</h3>
+                      </div>
+                      <p className="text-text-secondary">{service.description}</p>
                     </div>
-                    <p className="text-text-secondary">{service.description}</p>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               ))}
             </div>
           </div>
