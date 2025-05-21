@@ -9,9 +9,9 @@ export const content = {
       blog: 'Blog'
     },
     home: {
-      greeting: 'Bonjour, je suis',
+      greeting: 'Salut, moi c\'est ',
       title: 'Expert IoT, Tech & Industrie',
-      tagline: 'Je transforme vos défis techniques en solutions innovantes',
+      tagline: 'Passionné par l\'innovation, j\'adore créer des solutions tech avec des équipes motivées. Toujours partant pour de nouveaux défis !',
       buttons: {
         portfolio: 'Voir mon portfolio',
         cv: 'Mon CV',
@@ -38,23 +38,26 @@ export const content = {
           }
         ]
       },
-      featuredProjects: [
-        {
-          title: 'Plateforme IoT Industrielle',
-          description: 'Développement d\'une plateforme de monitoring industriel avec intégration de protocoles multiples.',
-          technologies: ['Node.js', 'React', 'Docker', 'MQTT']
-        },
-        {
-          title: 'Système de Gestion Énergétique',
-          description: 'Solution complète de monitoring et optimisation énergétique pour bâtiments intelligents.',
-          technologies: ['Python', 'KNX', 'Modbus', 'React']
-        },
-        {
-          title: 'Application Mobile IoT',
-          description: 'Application mobile cross-platform pour le contrôle et le monitoring d\'équipements IoT.',
-          technologies: ['React Native', 'Node.js', 'WebSocket']
-        }
-      ]
+      featuredProjects: {
+        title: 'Projets Récents',
+        items: [
+          {
+            title: 'Plateforme IoT Industrielle',
+            description: 'Développement d\'une plateforme de monitoring industriel avec intégration de protocoles multiples.',
+            technologies: ['Node.js', 'React', 'Docker', 'MQTT']
+          },
+          {
+            title: 'Système de Gestion Énergétique',
+            description: 'Solution complète de monitoring et optimisation énergétique pour bâtiments intelligents.',
+            technologies: ['Python', 'KNX', 'Modbus', 'React']
+          },
+          {
+            title: 'Application Mobile IoT',
+            description: 'Application mobile cross-platform pour le contrôle et le monitoring d\'équipements IoT.',
+            technologies: ['React Native', 'Node.js', 'WebSocket']
+          }
+        ]
+      }
     },
     portfolio: {
       pageTitle: 'Portfolio',
@@ -83,24 +86,67 @@ export const content = {
         certifications: 'Certifications',
         languages: 'Langues'
       },
-      skills: [
-        'Chefferie de projet IoT',
-        'Avant-vente technique',
-        'Intégration de protocoles industriels (KNX, Modbus, M-Bus, CAN, NMEA2000)',
-        'Développement microservices (Node.js, Python)',
-        'DevOps (Docker, Azure DevOps)',
-        'Automatisation CI/CD',
-        'Expertise réseaux IoT (LoRaWAN, Sigfox, NB-IoT, LTE-M)'
-      ],
+      skills: {
+        title: {
+          fr: "Compétences Techniques",
+          en: "Technical Skills"
+        },
+        programming: {
+          fr: "Langages de Programmation",
+          en: "Programming Languages"
+        },
+        technologies: {
+          fr: "Technologies",
+          en: "Technologies"
+        },
+        tools: {
+          fr: "Outils",
+          en: "Tools"
+        },
+        management: {
+          title: 'Gestion de Projet',
+          items: [
+            'Pilotage de projets IoT complexes',
+            'Coordination d\'équipes techniques',
+            'Gestion des délais et des ressources'
+          ]
+        },
+        technical: {
+          title: 'Expertise Technique',
+          items: [
+            'Protocoles industriels (KNX, Modbus, M-Bus, CAN, NMEA2000)',
+            'Réseaux IoT (LoRaWAN, Sigfox, NB-IoT, LTE-M)',
+            'Microservices (Node.js, Python)'
+          ]
+        },
+        devops: {
+          title: 'DevOps & Infrastructure',
+          items: [
+            'Pipelines CI/CD (Docker, Azure DevOps)',
+            'Automatisation des déploiements',
+            'Gestion de l\'infrastructure cloud'
+          ]
+        },
+        business: {
+          title: 'Business & Communication',
+          items: [
+            'Avant-vente technique',
+            'Accompagnement commercial',
+            'Formation et support technique'
+          ]
+        }
+      },
       experience: {
         wiio: {
           title: 'Chef de projet & expert IoT (Alternance)',
           location: 'Aix-en-Provence',
           date: 'Depuis octobre 2024',
           responsibilities: [
-            'Pilotage de projets IoT grands comptes',
-            'Avant-vente technique et accompagnement commercial',
-            'Déploiement terrain et coordination technique'
+            'Pilotage de projets IoT stratégiques pour des grands comptes du secteur industriel',
+            'Conception et présentation de solutions techniques innovantes en avant-vente',
+            'Coordination des déploiements terrain et suivi des équipes techniques',
+            'Optimisation des processus de déploiement et de maintenance',
+            'Formation et accompagnement des équipes clients sur les nouvelles solutions'
           ]
         },
         synox: {
@@ -108,9 +154,11 @@ export const content = {
           location: 'Montpellier',
           date: 'Octobre 2020 à octobre 2024',
           responsibilities: [
-            'Développement de microservices en Node.js',
-            'Intégration de protocoles industriels et réseaux LPWAN',
-            'Automatisation CI/CD avec Docker et Azure DevOps'
+            'Développement et maintenance de microservices critiques en Node.js',
+            'Intégration de protocoles industriels et mise en place de réseaux LPWAN',
+            'Mise en place et optimisation des pipelines CI/CD avec Docker et Azure DevOps',
+            'Formation et accompagnement des équipes techniques',
+            'Gestion de la documentation technique et des procédures de déploiement'
           ]
         },
         ies: {
@@ -118,8 +166,11 @@ export const content = {
           location: 'Montpellier',
           date: 'Mars à juillet 2020',
           responsibilities: [
-            'Conception d\'un espace immersif pour le projet HUT',
-            'Électronique, modélisation 3D, IHM'
+            'Conception et développement d\'un espace immersif pour le projet HUT',
+            'Intégration de solutions électroniques et développement d\'interfaces HMI',
+            'Modélisation 3D et prototypage rapide',
+            'Documentation technique et support utilisateur',
+            'Tests et validation des fonctionnalités développées'
           ]
         }
       },
@@ -155,15 +206,52 @@ export const content = {
           year: '2017'
         }
       ],
-      certifications: [
-        'SecNum Académie (ANSSI) - 2023',
-        'Sustainability Knowledge Certificate (Sulitest) - 2025',
-        'Comprendre la transition bas carbone (ADEME) - 2025'
-      ],
-      languages: [
-        'Français : natif',
-        'Anglais : bilingue'
-      ]
+      certifications: {
+        title: "Certifications",
+        google: {
+          title: "Google",
+          items: [
+            "Google Digital Academy (Skillshop) : AI-Powered Shopping ads Certification (2025)",
+            "Google Digital Academy : Google Analytics Certification (2025)"
+          ]
+        },
+        semrush: {
+          title: "Semrush",
+          items: [
+            "Cours de SEO axé sur le contenu avec Brian Dean (2025)",
+            "GA4 pour le SEO — Comment les données aident les entreprises à se développer avec Jeff Sauer (2025)",
+            "Marketing de contenu avancé avec Brian Dean (2025)",
+            "Principes de SEO : un guide essentiel pour les débutants (2025)"
+          ]
+        },
+        hubspot: {
+          title: "Hubspot",
+          items: [
+            "Inbound Marketing Certification (2025)"
+          ]
+        },
+        ademe: {
+          title: "ADEME",
+          items: [
+            "Low-Carbon Transition & Strategy Certificate (2025)"
+          ]
+        },
+        sulitest: {
+          title: "Sulitest",
+          items: [
+            "Sustainability knowledge certificate (2025)"
+          ]
+        },
+        anssi: {
+          title: "ANSSI",
+          items: [
+            "Cybersecurity Fundamentals (2023)"
+          ]
+        }
+      },
+      languages: {
+        title: "Langues"
+      }
     },
     contact: {
       pageTitle: 'Contact',
@@ -292,6 +380,12 @@ export const content = {
         description: 'Inscrivez-vous à ma newsletter pour recevoir mes derniers articles et actualités.',
         button: 'S\'inscrire à la newsletter'
       }
+    },
+    projects: {
+      title: 'Projets',
+      subtitle: 'Découvrez mes projets en IoT, développement web et solutions techniques innovantes.',
+      backToProjects: 'Retour aux projets',
+      technologies: 'Technologies utilisées'
     }
   },
   en: {
@@ -304,9 +398,9 @@ export const content = {
       blog: 'Blog'
     },
     home: {
-      greeting: 'Hello, I\'m',
+      greeting: 'Hey, I\'m ',
       title: 'IoT, Tech & Industry Expert',
-      tagline: 'I transform your technical challenges into innovative solutions',
+      tagline: 'Passionate about innovation, I love creating tech solutions with motivated teams. Always up for new challenges!',
       buttons: {
         portfolio: 'View Portfolio',
         cv: 'My Resume',
@@ -333,23 +427,26 @@ export const content = {
           }
         ]
       },
-      featuredProjects: [
-        {
-          title: 'Industrial IoT Platform',
-          description: 'Development of an industrial monitoring platform with multiple protocol integration.',
-          technologies: ['Node.js', 'React', 'Docker', 'MQTT']
-        },
-        {
-          title: 'Energy Management System',
-          description: 'Complete solution for energy monitoring and optimization in smart buildings.',
-          technologies: ['Python', 'KNX', 'Modbus', 'React']
-        },
-        {
-          title: 'IoT Mobile Application',
-          description: 'Cross-platform mobile application for IoT device control and monitoring.',
-          technologies: ['React Native', 'Node.js', 'WebSocket']
-        }
-      ]
+      featuredProjects: {
+        title: 'Recent Projects',
+        items: [
+          {
+            title: 'Industrial IoT Platform',
+            description: 'Development of an industrial monitoring platform with multiple protocol integration.',
+            technologies: ['Node.js', 'React', 'Docker', 'MQTT']
+          },
+          {
+            title: 'Energy Management System',
+            description: 'Complete solution for energy monitoring and optimization in smart buildings.',
+            technologies: ['Python', 'KNX', 'Modbus', 'React']
+          },
+          {
+            title: 'IoT Mobile Application',
+            description: 'Cross-platform mobile application for IoT device control and monitoring.',
+            technologies: ['React Native', 'Node.js', 'WebSocket']
+          }
+        ]
+      }
     },
     portfolio: {
       pageTitle: 'Portfolio',
@@ -378,24 +475,67 @@ export const content = {
         certifications: 'Certifications',
         languages: 'Languages'
       },
-      skills: [
-        'IoT Project Management',
-        'Technical Pre-Sales',
-        'Industrial Protocol Integration (KNX, Modbus, M-Bus, CAN, NMEA2000)',
-        'Microservices Development (Node.js, Python)',
-        'DevOps (Docker, Azure DevOps)',
-        'CI/CD Automation',
-        'IoT Network Expertise (LoRaWAN, Sigfox, NB-IoT, LTE-M)'
-      ],
+      skills: {
+        title: {
+          fr: "Compétences Techniques",
+          en: "Technical Skills"
+        },
+        programming: {
+          fr: "Langages de Programmation",
+          en: "Programming Languages"
+        },
+        technologies: {
+          fr: "Technologies",
+          en: "Technologies"
+        },
+        tools: {
+          fr: "Outils",
+          en: "Tools"
+        },
+        management: {
+          title: 'Project Management',
+          items: [
+            'Key account IoT project management',
+            'Technical pre-sales and commercial support',
+            'Field deployment and technical coordination'
+          ]
+        },
+        technical: {
+          title: 'Technical Expertise',
+          items: [
+            'Industrial protocols (KNX, Modbus, M-Bus, CAN, NMEA2000)',
+            'IoT networks (LoRaWAN, Sigfox, NB-IoT, LTE-M)',
+            'Microservices (Node.js, Python)'
+          ]
+        },
+        devops: {
+          title: 'DevOps & Infrastructure',
+          items: [
+            'CI/CD pipelines (Docker, Azure DevOps)',
+            'Automation of deployments',
+            'Cloud infrastructure management'
+          ]
+        },
+        business: {
+          title: 'Business & Communication',
+          items: [
+            'Technical pre-sales',
+            'Commercial support',
+            'Technical training and support'
+          ]
+        }
+      },
       experience: {
         wiio: {
           title: 'Project Manager & IoT Expert (Work-Study)',
           location: 'Aix-en-Provence, France',
           date: 'Since October 2024',
           responsibilities: [
-            'Key account IoT project management',
-            'Technical pre-sales and commercial support',
-            'Field deployment and technical coordination'
+            'Management of strategic IoT projects for key industrial accounts',
+            'Design and presentation of innovative technical solutions in pre-sales',
+            'Coordination of field deployments and technical team supervision',
+            'Optimization of deployment and maintenance processes',
+            'Training and support of client teams on new solutions'
           ]
         },
         synox: {
@@ -403,9 +543,11 @@ export const content = {
           location: 'Montpellier, France',
           date: 'October 2020 to October 2024',
           responsibilities: [
-            'Node.js microservices development',
-            'Industrial protocols and LPWAN networks integration',
-            'CI/CD automation with Docker and Azure DevOps'
+            'Development and maintenance of critical Node.js microservices',
+            'Integration of industrial protocols and LPWAN network setup',
+            'Implementation and optimization of CI/CD pipelines with Docker and Azure DevOps',
+            'Technical team training and support',
+            'Management of technical documentation and deployment procedures'
           ]
         },
         ies: {
@@ -413,8 +555,11 @@ export const content = {
           location: 'Montpellier, France',
           date: 'March to July 2020',
           responsibilities: [
-            'Design of an immersive space for the HUT project',
-            'Electronics, 3D modeling, HMI'
+            'Design and development of an immersive space for the HUT project',
+            'Integration of electronic solutions and HMI development',
+            '3D modeling and rapid prototyping',
+            'Technical documentation and user support',
+            'Testing and validation of developed features'
           ]
         }
       },
@@ -450,15 +595,52 @@ export const content = {
           year: '2017'
         }
       ],
-      certifications: [
-        'SecNum Academy (ANSSI) - 2023',
-        'Sustainability Knowledge Certificate (Sulitest) - 2025',
-        'Understanding the Low-Carbon Transition (ADEME) - 2025'
-      ],
-      languages: [
-        'French: native',
-        'English: bilingual'
-      ]
+      certifications: {
+        title: "Certifications",
+        google: {
+          title: "Google",
+          items: [
+            "Google Digital Academy (Skillshop): AI-Powered Shopping ads Certification (2025)",
+            "Google Digital Academy: Google Analytics Certification (2025)"
+          ]
+        },
+        semrush: {
+          title: "Semrush",
+          items: [
+            "Content-Focused SEO Course with Brian Dean (2025)",
+            "GA4 for SEO — How Data Helps Businesses Grow with Jeff Sauer (2025)",
+            "Advanced Content Marketing with Brian Dean (2025)",
+            "SEO Principles: An Essential Guide for Beginners (2025)"
+          ]
+        },
+        hubspot: {
+          title: "Hubspot",
+          items: [
+            "Inbound Marketing Certification (2025)"
+          ]
+        },
+        ademe: {
+          title: "ADEME",
+          items: [
+            "Low-Carbon Transition & Strategy Certificate (2025)"
+          ]
+        },
+        sulitest: {
+          title: "Sulitest",
+          items: [
+            "Sustainability knowledge certificate (2025)"
+          ]
+        },
+        anssi: {
+          title: "ANSSI",
+          items: [
+            "Cybersecurity Fundamentals (2023)"
+          ]
+        }
+      },
+      languages: {
+        title: "Languages"
+      }
     },
     contact: {
       pageTitle: 'Contact',
@@ -587,6 +769,12 @@ export const content = {
         description: 'Subscribe to my newsletter to receive my latest articles and news.',
         button: 'Subscribe to newsletter'
       }
+    },
+    projects: {
+      title: 'Projects',
+      subtitle: 'Discover my projects in IoT, web development and innovative technical solutions.',
+      backToProjects: 'Back to projects',
+      technologies: 'Technologies used'
     }
   }
 };

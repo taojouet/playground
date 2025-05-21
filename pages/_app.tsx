@@ -10,15 +10,15 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <LanguageProvider>
+        <LanguageProvider>
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-grow">
-          <Component {...pageProps} />
+              <Component {...pageProps} />
         </main>
         <Footer />
       </div>
-      <Toaster />
-    </LanguageProvider>
+            <Toaster />
+        </LanguageProvider>
   );
 }

@@ -8,6 +8,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { useContext } from 'react';
 import { LanguageContext } from '@/contexts/LanguageContext';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -16,6 +18,11 @@ const formSchema = z.object({
   email: z.string().email({
     message: 'Veuillez entrer une adresse email valide',
   }),
+  type: z.enum(['contact', 'quote'], {
+    required_error: 'Veuillez sélectionner le type de demande',
+  }),
+  company: z.string().optional(),
+  phone: z.string().optional(),
   subject: z.string().min(5, {
     message: 'Le sujet doit contenir au moins 5 caractères',
   }),
@@ -30,14 +37,19 @@ export function ContactForm() {
   const { language } = useContext(LanguageContext);
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formType, setFormType] = useState<'contact' | 'quote'>('contact');
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      type: 'contact',
+    },
   });
 
   const onSubmit = async (data: FormData) => {
@@ -62,6 +74,7 @@ export function ContactForm() {
           description: result.message,
         });
         reset();
+        setFormType('contact');
       } else {
         throw new Error(result.message);
       }
@@ -79,6 +92,31 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="space-y-4">
+        <div>
+          <Label htmlFor="type" className="text-[#1E293B]">
+            {language === 'fr' ? 'Type de demande' : 'Request type'}
+          </Label>
+          <Select
+            defaultValue="contact"
+            onValueChange={(value: 'contact' | 'quote') => {
+              setFormType(value);
+              setValue('type', value);
+            }}
+          >
+            <SelectTrigger>
+              <SelectValue placeholder={language === 'fr' ? 'Sélectionnez le type' : 'Select type'} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="contact">
+                {language === 'fr' ? 'Contact' : 'Contact'}
+              </SelectItem>
+              <SelectItem value="quote">
+                {language === 'fr' ? 'Demande de devis' : 'Quote request'}
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         <div>
           <Input
             {...register('name')}
@@ -101,6 +139,25 @@ export function ContactForm() {
             <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
           )}
         </div>
+
+        {formType === 'quote' && (
+          <>
+            <div>
+              <Input
+                {...register('company')}
+                placeholder={language === 'fr' ? 'Nom de votre entreprise (facultatif)' : 'Your company name (optional)'}
+              />
+            </div>
+
+            <div>
+              <Input
+                {...register('phone')}
+                type="tel"
+                placeholder={language === 'fr' ? 'Votre téléphone (facultatif)' : 'Your phone (optional)'}
+              />
+            </div>
+          </>
+        )}
 
         <div>
           <Input
@@ -134,6 +191,10 @@ export function ContactForm() {
           ? language === 'fr'
             ? 'Envoi en cours...'
             : 'Sending...'
+          : formType === 'quote'
+          ? language === 'fr'
+            ? 'Demander un devis'
+            : 'Request a quote'
           : language === 'fr'
           ? 'Envoyer le message'
           : 'Send message'}

@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import Head from 'next/head';
 import { Button } from '@/components/ui/button';
-import { Printer, Download } from 'lucide-react';
+import { Printer, Download, Mail, Linkedin, MapPin, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { LanguageContext } from '@/contexts/LanguageContext';
 import { content } from '@/data/content';
 import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
 
 export default function CV() {
   const { language } = useContext(LanguageContext);
@@ -64,105 +65,212 @@ export default function CV() {
           {/* Header */}
           <div className="text-center mb-8 print:mb-6">
             <h2 className="text-3xl font-bold text-blue-dark print:text-2xl">Tao Jouet</h2>
-            <p className="text-xl font-medium text-blue-electric print:text-lg">{t.jobTitle}</p>
-            <p className="text-text-secondary mt-2 print:text-sm">Aix-en-Provence, France</p>
-            <div className="mt-2 text-text-secondary print:text-sm">
-              <p>Email: tao.jouet@email.com</p>
-              <p>LinkedIn: linkedin.com/in/taojouet</p>
+            <p className="text-xl font-medium text-blue-electric print:text-lg mt-2">{t.jobTitle}</p>
+            <div className="flex flex-wrap justify-center gap-4 mt-4 text-text-secondary print:text-sm">
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                <span>Aix-en-Provence, France</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4" />
+                <a href="mailto:contact@taojouet.com" className="hover:text-blue-electric">contact@taojouet.com</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Linkedin className="h-4 w-4" />
+                <a href="https://linkedin.com/in/taojouet" target="_blank" rel="noopener noreferrer" className="hover:text-blue-electric">linkedin.com/in/taojouet</a>
+              </div>
             </div>
           </div>
 
           {/* Skills */}
-          <div className="mb-8 print:mb-4">
-            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-3 print:text-lg">{t.sections.skills}</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 list-disc list-inside print:text-sm">
-              {t.skills.map((skill, index) => (
-                <li key={index} className="text-text-primary">{skill}</li>
-              ))}
-            </ul>
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold mb-4">{content[language].cv.skills.title[language]}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">{content[language].cv.skills.programming[language]}</h3>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Python, JavaScript, C/C++</li>
+                    <li>SQL, NoSQL</li>
+                    <li>HTML/CSS</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">{content[language].cv.skills.technologies[language]}</h3>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>IoT (Arduino, Raspberry Pi)</li>
+                    <li>Cloud (AWS, Azure)</li>
+                    <li>Web (React, Node.js)</li>
+                    <li>DevOps (Docker, Kubernetes)</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">{content[language].cv.skills.tools[language]}</h3>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Git, GitHub</li>
+                    <li>Jira, Confluence</li>
+                    <li>VS Code, IntelliJ</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Experience */}
           <div className="mb-8 print:mb-4">
-            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-3 print:text-lg">{t.sections.experience}</h3>
+            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-4 print:text-lg">{t.sections.experience}</h3>
             
-            <div className="mb-4">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
-                <div>
-                  <h4 className="text-lg font-medium text-blue-dark print:text-base">WIIO – {t.experience.wiio.title}</h4>
-                  <p className="text-text-secondary print:text-sm">{t.experience.wiio.location}</p>
+            <div className="space-y-6">
+              <div className="relative pl-6 border-l-2 border-blue-electric">
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-electric"></div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                  <div>
+                    <h4 className="text-lg font-medium text-blue-dark print:text-base">WIIO – {t.experience.wiio.title}</h4>
+                    <div className="flex items-center gap-2 text-text-secondary print:text-sm mt-1">
+                      <MapPin className="h-4 w-4" />
+                      <span>{t.experience.wiio.location}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">
+                    <Calendar className="h-4 w-4" />
+                    <span>{t.experience.wiio.date}</span>
+                  </div>
                 </div>
-                <p className="text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">{t.experience.wiio.date}</p>
+                <ul className="mt-3 list-disc list-inside print:text-sm space-y-1">
+                  {t.experience.wiio.responsibilities.map((item, index) => (
+                    <li key={index} className="text-text-primary">{item}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-2 list-disc list-inside print:text-sm">
-                {t.experience.wiio.responsibilities.map((item, index) => (
-                  <li key={index} className="text-text-primary">{item}</li>
-                ))}
-              </ul>
-            </div>
 
-            <div className="mb-4">
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
-                <div>
-                  <h4 className="text-lg font-medium text-blue-dark print:text-base">SYNOX – {t.experience.synox.title}</h4>
-                  <p className="text-text-secondary print:text-sm">{t.experience.synox.location}</p>
+              <div className="relative pl-6 border-l-2 border-blue-electric">
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-electric"></div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                  <div>
+                    <h4 className="text-lg font-medium text-blue-dark print:text-base">SYNOX – {t.experience.synox.title}</h4>
+                    <div className="flex items-center gap-2 text-text-secondary print:text-sm mt-1">
+                      <MapPin className="h-4 w-4" />
+                      <span>{t.experience.synox.location}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">
+                    <Calendar className="h-4 w-4" />
+                    <span>{t.experience.synox.date}</span>
+                  </div>
                 </div>
-                <p className="text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">{t.experience.synox.date}</p>
+                <ul className="mt-3 list-disc list-inside print:text-sm space-y-1">
+                  {t.experience.synox.responsibilities.map((item, index) => (
+                    <li key={index} className="text-text-primary">{item}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-2 list-disc list-inside print:text-sm">
-                {t.experience.synox.responsibilities.map((item, index) => (
-                  <li key={index} className="text-text-primary">{item}</li>
-                ))}
-              </ul>
-            </div>
 
-            <div>
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
-                <div>
-                  <h4 className="text-lg font-medium text-blue-dark print:text-base">Institut d'Électronique et des Systèmes – {t.experience.ies.title}</h4>
-                  <p className="text-text-secondary print:text-sm">{t.experience.ies.location}</p>
+              <div className="relative pl-6 border-l-2 border-blue-electric">
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-electric"></div>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                  <div>
+                    <h4 className="text-lg font-medium text-blue-dark print:text-base">Institut d'Électronique et des Systèmes – {t.experience.ies.title}</h4>
+                    <div className="flex items-center gap-2 text-text-secondary print:text-sm mt-1">
+                      <MapPin className="h-4 w-4" />
+                      <span>{t.experience.ies.location}</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">
+                    <Calendar className="h-4 w-4" />
+                    <span>{t.experience.ies.date}</span>
+                  </div>
                 </div>
-                <p className="text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">{t.experience.ies.date}</p>
+                <ul className="mt-3 list-disc list-inside print:text-sm space-y-1">
+                  {t.experience.ies.responsibilities.map((item, index) => (
+                    <li key={index} className="text-text-primary">{item}</li>
+                  ))}
+                </ul>
               </div>
-              <ul className="mt-2 list-disc list-inside print:text-sm">
-                {t.experience.ies.responsibilities.map((item, index) => (
-                  <li key={index} className="text-text-primary">{item}</li>
-                ))}
-              </ul>
             </div>
           </div>
 
           {/* Education */}
           <div className="mb-8 print:mb-4">
-            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-3 print:text-lg">{t.sections.education}</h3>
-            {t.education.map((edu, index) => (
-              <div key={index} className="mb-2 last:mb-0">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
-                  <h4 className="text-lg font-medium text-blue-dark print:text-base">{edu.degree}</h4>
-                  <p className="text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">{edu.year}</p>
+            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-4 print:text-lg">{t.sections.education}</h3>
+            <div className="space-y-4">
+              {t.education.map((edu, index) => (
+                <div key={index} className="relative pl-6 border-l-2 border-blue-electric">
+                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-electric"></div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
+                    <h4 className="text-lg font-medium text-blue-dark print:text-base">{edu.degree}</h4>
+                    <div className="flex items-center gap-2 text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">
+                      <Calendar className="h-4 w-4" />
+                      <span>{edu.year}</span>
+                    </div>
+                  </div>
+                  <p className="text-text-secondary print:text-sm mt-1">{edu.institution}</p>
                 </div>
-                <p className="text-text-secondary print:text-sm">{edu.institution}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Certifications */}
           <div className="mb-8 print:mb-4">
-            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-3 print:text-lg">{t.sections.certifications}</h3>
-            <ul className="list-disc list-inside print:text-sm">
-              {t.certifications.map((cert, index) => (
-                <li key={index} className="text-text-primary mb-1">{cert}</li>
-              ))}
-            </ul>
+            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-4 print:text-lg">{t.sections.certifications}</h3>
+            <div className="space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.google.title}</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {content[language].cv.certifications.google.items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.semrush.title}</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {content[language].cv.certifications.semrush.items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.hubspot.title}</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {content[language].cv.certifications.hubspot.items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.ademe.title}</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {content[language].cv.certifications.ademe.items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.sulitest.title}</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {content[language].cv.certifications.sulitest.items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.anssi.title}</h4>
+                <ul className="list-disc list-inside space-y-1">
+                  {content[language].cv.certifications.anssi.items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
 
           {/* Languages */}
           <div>
-            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-3 print:text-lg">{t.sections.languages}</h3>
-            <ul className="list-disc list-inside print:text-sm">
-              {t.languages.map((lang, index) => (
-                <li key={index} className="text-text-primary">{lang}</li>
-              ))}
+            <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-4 print:text-lg">{t.sections.languages}</h3>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Français (Natif)</li>
+              <li>Anglais (Courant)</li>
+              <li>Espagnol (Intermédiaire)</li>
             </ul>
           </div>
         </motion.div>
@@ -177,13 +285,20 @@ export default function CV() {
             font-size: 12pt;
             line-height: 1.3;
           }
-          nav, footer, button, .print\\:hidden {
+          nav, footer, button, .print\\:hidden,
+          header, #__next > div > div:first-child {
             display: none !important;
           }
           .container {
             max-width: 100% !important;
             padding: 0 !important;
             margin: 0 !important;
+          }
+          @page :first {
+            margin-top: 0;
+          }
+          @page {
+            size: A4;
           }
         }
       `}</style>

@@ -19,18 +19,18 @@ export async function getStaticProps() {
   };
 }
 
-export default function Portfolio({ projects }: { projects: Project[] }) {
+export default function Projects({ projects }: { projects: Project[] }) {
   const { language } = useContext(LanguageContext);
-  const t = content[language].portfolio;
+  const t = content[language].projects;
 
   const metaContent = {
     fr: {
-      title: "Portfolio - Tao Jouet",
-      description: "Découvrez mes projets dans le domaine de l'IoT, du développement logiciel et de l'industrie."
+      title: "Projets - Tao Jouet",
+      description: "Découvrez mes projets en IoT, développement web et solutions techniques innovantes."
     },
     en: {
-      title: "Portfolio - Tao Jouet",
-      description: "Discover my projects in IoT, software development, and industry."
+      title: "Projects - Tao Jouet",
+      description: "Discover my projects in IoT, web development and innovative technical solutions."
     }
   };
 
@@ -66,7 +66,7 @@ export default function Portfolio({ projects }: { projects: Project[] }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Link href={`/portfolio/${project.slug}`}>
+              <Link href={`/projects/${project.slug}`}>
                 <Card className="h-full border-[#1E293B]/10 hover:border-[#3B82F6] transition-colors">
                   <div className="relative w-full h-48">
                     <Image
@@ -111,31 +111,7 @@ export default function Portfolio({ projects }: { projects: Project[] }) {
             </motion.div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="w-full max-w-6xl mt-16 text-center"
-        >
-          <Card className="border-[#1E293B]/10 bg-[#F8FAFC]">
-            <CardHeader>
-              <CardTitle className="text-2xl text-[#1E293B]">{t.cta.title}</CardTitle>
-              <CardDescription className="text-[#64748B]">
-                {t.cta.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Link href="/contact">
-                <Button className="bg-[#3B82F6] hover:bg-[#3B82F6]/90">
-                  {t.cta.button}
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
     </>
   );
-}
+} 
