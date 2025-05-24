@@ -6,6 +6,8 @@ type ResponseData = {
   message: string;
 };
 
+type Language = 'fr' | 'en';
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
@@ -14,11 +16,11 @@ export default async function handler(
     return res.status(405).json({ success: false, message: 'Method not allowed' });
   }
 
-  let language = 'fr'; // Default language
+  let language: Language = 'fr'; // Default language
 
   try {
     const { name, email, type, company, phone, subject, message, lang } = req.body;
-    language = lang || 'fr'; // Use provided language or default to French
+    language = (lang as Language) || 'fr'; // Use provided language or default to French
 
     // Validation des champs
     if (!name || !email || !subject || !message) {
