@@ -374,12 +374,7 @@ export const content = {
     },
     blog: {
       title: 'Blog',
-      subtitle: 'Articles et réflexions sur l\'IoT, l\'intelligence artificielle, et les technologies émergentes.',
-      newsletter: {
-        title: 'Restez informé',
-        description: 'Inscrivez-vous à ma newsletter pour recevoir mes derniers articles et actualités.',
-        button: 'S\'inscrire à la newsletter'
-      }
+      subtitle: 'Articles et réflexions sur l\'IoT, l\'intelligence artificielle, et les technologies émergentes.'
     },
     projects: {
       title: 'Projets',
@@ -763,12 +758,7 @@ export const content = {
     },
     blog: {
       title: 'Blog',
-      subtitle: 'Articles and thoughts on IoT, artificial intelligence, and emerging technologies.',
-      newsletter: {
-        title: 'Stay Updated',
-        description: 'Subscribe to my newsletter to receive my latest articles and news.',
-        button: 'Subscribe to newsletter'
-      }
+      subtitle: 'Articles and thoughts on IoT, artificial intelligence, and emerging technologies.'
     },
     projects: {
       title: 'Projects',

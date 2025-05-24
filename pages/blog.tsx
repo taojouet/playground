@@ -112,35 +112,6 @@ export default function Blog({ posts }: { posts: BlogPost[] }) {
             </motion.div>
           ))}
         </div>
-
-        {/* Newsletter Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="w-full max-w-6xl mt-16"
-        >
-          <Card className="border-[#1E293B]/10 bg-[#F8FAFC]">
-            <CardHeader>
-              <CardTitle className="text-2xl text-[#1E293B]">{t.newsletter.title}</CardTitle>
-              <CardDescription className="text-[#64748B]">
-                {t.newsletter.description}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex gap-4">
-                <Input
-                  type="email"
-                  placeholder="votre@email.com"
-                  className="flex-1 border-[#1E293B]/10 focus:border-[#3B82F6]"
-                />
-                <Button className="bg-[#3B82F6] hover:bg-[#3B82F6]/90">
-                  {t.newsletter.button}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
       </div>
     </>
   );

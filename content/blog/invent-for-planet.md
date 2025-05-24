@@ -1,73 +1,73 @@
 ---
 title:
-  fr: "Notre équipe française brille à la finale mondiale d'Invent for the Planet"
-  en: "Our French Team Shines at the Global Finals of Invent for the Planet"
+  fr: "Mon aventure à la finale mondiale d'Invent For The Planet"
+  en: "My Journey at the Global Finals of Invent For The Planet"
 description:
-  fr: "Retour sur une aventure humaine et technologique unique à Texas A&M, où l'équipe française de KEDGE a représenté fièrement l'innovation made in France."
-  en: "A look back at a unique human and technological adventure at Texas A&M, where KEDGE’s French team proudly represented French innovation."
+  fr: "Récit personnel d'une aventure humaine et technologique à Texas A&M, où j'ai représenté fièrement l'innovation française avec mon équipe de KEDGE."
+  en: "Personal story of a human and technological adventure at Texas A&M, where I proudly represented French innovation with my KEDGE team."
 date: "2025-04-18"
 author: "Tao Jouet"
 category: "Innovation"
-tags: ["Hackathon", "Invent for the Planet", "KEDGE", "Innovation", "Étudiants"]
-coverImage: "/images/blog/invent-for-planet-cover.webp"
+tags: ["Hackathon", "Invent For The Planet", "KEDGE", "Innovation", "Étudiants"]
+coverImage: "/images/blog/prize_IFTP.webp"
 images:
-  - path: "/images/blog/invent-for-planet-team.webp"
+  - path: "/images/blog/team_poster_presentation_2.webp"
     alt:
       fr: "L’équipe française à College Station, Texas"
       en: "The French team in College Station, Texas"
-  - path: "/images/blog/invent-for-planet-working.webp"
+  - path: "/images/blog/team_presentation_2.webp"
     alt:
       fr: "Travail d’équipe pendant le hackathon"
       en: "Teamwork during the hackathon"
-  - path: "/images/blog/invent-for-planet-stage.webp"
+  - path: "/images/blog/group_photo.webp"
     alt:
       fr: "Présentation finale du projet"
       en: "Final pitch presentation"
 readTime: "4 min"
 ---
 
-# Notre équipe française brille à la finale mondiale d'Invent for the Planet
+# Mon aventure à la finale mondiale d'Invent For The Planet
 
-Du local à l’international, cette aventure restera gravée. Sélectionnée lors de la phase française du hackathon **Invent for the Planet** organisée à KEDGE, notre équipe a eu l’immense honneur de représenter la France lors de la **finale mondiale à Texas A&M University**.
+Du local à l’international, cette aventure restera à jamais gravée dans ma mémoire. Après avoir été sélectionnés lors de la phase française du hackathon **Invent For The Planet** aux Arts et Métiers d'Aix-en-Provence, en partenariat avec KEDGE Business School , avec mon équipe, nous avons eu l’immense privilège de représenter la France lors de la **finale mondiale à la Texas A&M University**.
 
-## Un défi international intense
+## Trois jours de défi intense
 
-Pendant trois jours, nous avons collaboré avec des équipes venues des quatre coins du monde. Objectif : co-concevoir en un temps record des solutions concrètes à des enjeux globaux. Dans cette ambiance de travail acharné et de bouillonnement intellectuel, nous avons redoublé d’efforts, combiné nos compétences, challengé nos idées pour faire émerger une solution pertinente, réalisable et porteuse d’impact.
+Pendant trois jours, j’ai eu la chance de collaborer avec des talents venus des quatre coins du monde. L’objectif : concevoir en un temps record une solution concrète à un enjeu global. Dans cette atmosphère de pression créative, nous avons tout donné, combiné nos compétences, challengé nos idées sans relâche. Ce travail acharné a donné naissance à une solution dont nous sommes fiers, à la fois réaliste, utile et porteuse d’impact.
 
-![L’équipe française à College Station, Texas](/images/blog/invent-for-planet-team.webp)
+![L’équipe française à College Station, Texas](/images/blog/team_poster_presentation_2.webp)
 
-## Une expérience humaine inoubliable
+## Une aventure humaine hors du commun
 
-Au-delà de l’innovation, c’est surtout l’humain qui marque. La bienveillance, les échanges interculturels, le respect mutuel, la passion partagée pour résoudre des problèmes complexes ensemble. Cette aventure a renforcé notre conviction que l’innovation est d’abord une histoire de collaboration, d’écoute, de diversité et d’engagement.
+Ce qui nous a le plus marqué, ce n’est pas seulement l’innovation, mais l’humain. La bienveillance ambiante, les échanges interculturels riches, le respect mutuel, la passion partagée. Nous avons compris encore plus profondément que l’innovation naît avant tout de la collaboration, de l’écoute, de la diversité et de l’engagement sincère.
 
-![Travail d’équipe pendant le hackathon](/images/blog/invent-for-planet-working.webp)
+![Travail d’équipe pendant le hackathon](/images/blog/team_presentation_2.webp)
 
 ## Et maintenant ?
 
-Cette expérience donne un nouvel élan à nos projets. Elle renforce notre volonté d’innover avec sens, d’avoir un impact concret, et de continuer à collaborer à l’échelle internationale. Merci à KEDGE pour la confiance, à Texas A&M pour l’accueil, et à tous ceux qui ont rendu cette aventure possible.
+Cette expérience nous a donné un nouvel élan. Elle renforce ma volonté d’innover avec du sens, d’avoir un impact réel, et de continuer à travailler avec des équipes du monde entier. Un immense merci à KEDGE Business School pour leur confiance, à Texas A&M pour leur accueil incroyable, et à tous ceux qui ont rendu cette aventure possible, notamment nos partenaires des Arts et Métiers.
 
-![Présentation finale du projet](/images/blog/invent-for-planet-stage.webp)
+![Présentation finale du projet](/images/blog/group_photo.webp)
 
 ---
 
-# Our French Team Shines at the Global Finals of Invent for the Planet
+# My Journey at the Global Finals of Invent For The Planet
 
-From local to global, this adventure left a lasting impression. After being selected during the French phase of **Invent for the Planet** hosted at KEDGE, our team proudly represented France at the **global finals at Texas A&M University**.
+From local to global, this adventure will forever be etched in my memory. After being selected during the French phase of the **Invent For The Planet** hackathon at Arts et Métiers in Aix-en-Provence, in partnership with KEDGE Business School, my team and I had the immense privilege of representing France at the **global finals at Texas A\&M University**.
 
-## A high-stakes international challenge
+## A three-day intense challenge
 
-Over three intense days, we worked alongside teams from around the world to design real-world solutions to major challenges. In a fast-paced, collaborative environment, we combined our expertise, questioned our assumptions, and built a solution that was impactful, feasible, and meaningful.
+Over three packed days, I collaborated with participants from around the world. Our goal: develop a real, impactful solution to a global issue — in record time. It was a whirlwind of ideas, iteration, and teamwork. We gave it everything we had, pushing limits together, and together we built a solution that was realistic, actionable, and meaningful.
 
-![The French team in College Station, Texas](/images/blog/invent-for-planet-team.webp)
+![The French team in College Station, Texas](/images/blog/team_poster_presentation_2.webp)
 
-## A human adventure above all
+## A deeply human experience
 
-Beyond innovation, it’s the human experience that stands out. Genuine kindness, cross-cultural exchange, mutual respect, and shared passion to solve global problems together. This journey reminded us that innovation is built on collaboration, empathy, diversity, and commitment.
+What struck me the most wasn’t just the innovation — it was the people. The kindness, the cultural exchange, the mutual respect, and the shared determination to solve complex problems. This adventure reaffirmed for us that innovation is fundamentally about collaboration, listening, diversity, and true commitment.
 
-![Teamwork during the hackathon](/images/blog/invent-for-planet-working.webp)
+![Teamwork during the hackathon](/images/blog/team_presentation_2.webp)
 
 ## What’s next?
 
-This experience gives new energy to our future projects. It strengthens our desire to innovate with purpose, create real-world impact, and collaborate internationally. A big thank you to KEDGE for their support, to Texas A&M for hosting us, and to everyone who made this experience possible.
+This experience gave us fresh momentum. It fueled my drive to innovate with purpose, create real-world impact, and keep building bridges across borders. Huge thanks to KEDGE for trusting us, Texas A&M for hosting us, and everyone who made this adventure possible, including our partners from Arts et Métiers.
 
-![Final pitch presentation](/images/blog/invent-for-planet-stage.webp)
+![Final pitch presentation](/images/blog/group_photo.webp)
