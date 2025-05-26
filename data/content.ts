@@ -177,32 +177,32 @@ export const content = {
       education: [
         {
           degree: 'Mastère Spécialisé - Innovation, Transformation et Entrepreneuriat',
-          institution: 'KEDGE Business School',
+          institution: 'KEDGE Business School - Marseille, France',
           year: '2024 - 2025'
         },
         {
           degree: 'Master BAC+5 - Manager en Architecture Logicielle du SI',
-          institution: 'CESI',
+          institution: 'CESI - Montpellier, France',
           year: '2022 - 2024'
         },
         {
           degree: 'Bachelor BAC+3 - Responsable en Ingénierie Logicielle',
-          institution: 'CESI',
+          institution: 'CESI - Montpellier, France',
           year: '2021 - 2022'
         },
         {
           degree: 'Licence Pro - Systèmes Embarqués',
-          institution: 'Pôle Formation IJIMM Occitanie',
+          institution: 'Pôle Formation IJIMM Occitanie -  - Montpellier, France',
           year: '2020 - 2021'
         },
         {
           degree: 'DUT - GEII',
-          institution: 'IUT Montpellier-Sète',
+          institution: 'IUT Montpellier-Sète - Marseille, France',
           year: '2017 - 2020'
         },
         {
           degree: 'Bac Scientifique',
-          institution: 'Lycée Jean Mermoz - Dakar',
+          institution: 'Lycée Jean Mermoz - Dakar, Sénégal',
           year: '2017'
         }
       ],
@@ -561,27 +561,27 @@ export const content = {
       education: [
         {
           degree: 'Specialized Master\'s Degree - Innovation, Transformation and Entrepreneurship',
-          institution: 'KEDGE Business School',
+          institution: 'KEDGE Business School - Marseille, France',
           year: '2024 - 2025'
         },
         {
           degree: 'Master\'s Degree - Software Architecture Manager',
-          institution: 'CESI',
+          institution: 'CESI - Montpellier, France',
           year: '2022 - 2024'
         },
         {
           degree: 'Bachelor\'s Degree - Software Engineering Manager',
-          institution: 'CESI',
+          institution: 'CESI - Montpellier, France',
           year: '2021 - 2022'
         },
         {
           degree: 'Professional License - Embedded Systems',
-          institution: 'Pôle Formation IJIMM Occitanie',
+          institution: 'Pôle Formation IJIMM Occitanie -  - Montpellier, France',
           year: '2020 - 2021'
         },
         {
           degree: 'Technical Degree - Electrical Engineering & Industrial Computing',
-          institution: 'IUT Montpellier-Sète',
+          institution: 'IUT Montpellier-Sète - Marseille, France - Montpellier, France',
           year: '2017 - 2020'
         },
         {

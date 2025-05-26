@@ -33,11 +33,15 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export function ContactForm() {
+interface ContactFormProps {
+  defaultType?: 'contact' | 'quote';
+}
+
+export function ContactForm({ defaultType = 'contact' }: ContactFormProps) {
   const { language } = useContext(LanguageContext);
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formType, setFormType] = useState<'contact' | 'quote'>('contact');
+  const [formType, setFormType] = useState<'contact' | 'quote'>(defaultType);
 
   const {
     register,
@@ -48,7 +52,7 @@ export function ContactForm() {
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      type: 'contact',
+      type: defaultType,
     },
   });
 
@@ -97,7 +101,7 @@ export function ContactForm() {
             {language === 'fr' ? 'Type de demande' : 'Request type'}
           </Label>
           <Select
-            defaultValue="contact"
+            defaultValue={defaultType}
             onValueChange={(value: 'contact' | 'quote') => {
               setFormType(value);
               setValue('type', value);

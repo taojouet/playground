@@ -57,7 +57,28 @@ export default function Portfolio({ projects }: { projects: Project[] }) {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Construction Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="w-full max-w-3xl text-center"
+        >
+          <Card className="border-[#1E293B]/10">
+            <CardHeader>
+              <CardTitle className="text-2xl text-[#1E293B]">
+                {language === 'fr' ? 'En construction' : 'Under construction'}
+              </CardTitle>
+              <CardDescription className="text-[#64748B] text-lg">
+                {language === 'fr' 
+                  ? 'Cette section est actuellement en cours de développement. Revenez bientôt pour découvrir mes projets dans le domaine de l\'IoT, du développement logiciel et de l\'industrie.'
+                  : 'This section is currently under development. Come back soon to discover my projects in IoT, software development, and industry.'}
+              </CardDescription>
+            </CardHeader>
+          </Card>
+        </motion.div>
+
+        {/* Projects Grid - Temporarily Commented
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl">
           {projects.map((project, index) => (
             <motion.div
@@ -111,8 +132,10 @@ export default function Portfolio({ projects }: { projects: Project[] }) {
             </motion.div>
           ))}
         </div>
+        */}
 
         {/* CTA Section */}
+        {/*
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,6 +158,7 @@ export default function Portfolio({ projects }: { projects: Project[] }) {
             </CardContent>
           </Card>
         </motion.div>
+      */}
       </div>
     </>
   );
