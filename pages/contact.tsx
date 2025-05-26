@@ -6,9 +6,12 @@ import { content } from '@/data/content';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Linkedin, Github } from 'lucide-react';
 import { ContactForm } from '@/components/ContactForm';
+import { useRouter } from 'next/router';
 
 export default function Contact() {
   const { language } = useContext(LanguageContext);
+  const router = useRouter();
+  const { type } = router.query;
   const t = content[language].contact;
 
   const metaContent = {
@@ -60,7 +63,7 @@ export default function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ContactForm />
+                <ContactForm defaultType={type === 'quote' ? 'quote' : 'contact'} />
               </CardContent>
             </Card>
           </motion.div>

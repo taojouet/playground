@@ -40,26 +40,16 @@ export default function CV() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-6xl text-center mb-16"
+          className="w-full max-w-6xl text-center mb-2"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#1E293B]">
             {t.title}
           </h1>
-          <p className="text-xl text-[#64748B] max-w-3xl mx-auto mb-8">
-            {t.jobTitle}
-          </p>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Button 
-              onClick={handlePrint} 
-              className="bg-[#3B82F6] hover:bg-[#3B82F6]/90 text-white px-6 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
-            >
-              <Printer className="mr-2 h-4 w-4" />
-              {t.buttons.print}
-            </Button>
           </motion.div>
         </motion.div>
 
@@ -71,7 +61,7 @@ export default function CV() {
             className="bg-white rounded-lg shadow-md p-8 print:shadow-none print:p-0 max-w-4xl mx-auto"
           >
             {/* Header */}
-            <div className="text-center mb-8 print:mb-6">
+            <div className="text-center mb-4 print:mb-6">
               <h2 className="text-3xl font-bold text-blue-dark print:text-2xl">Tao Jouet</h2>
               <p className="text-xl font-medium text-blue-electric print:text-lg mt-2">{t.jobTitle}</p>
               <div className="flex flex-wrap justify-center gap-4 mt-4 text-text-secondary print:text-sm">
@@ -81,7 +71,7 @@ export default function CV() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4" />
-                  <a href="mailto:contact@taojouet.com" className="hover:text-blue-electric">contact@taojouet.com</a>
+                  <a href="mailto:taoujouet@gmail.com" className="hover:text-blue-electric">taoujouet@gmail.com</a>
                 </div>
                 <div className="flex items-center gap-2">
                   <Linkedin className="h-4 w-4" />
@@ -91,33 +81,93 @@ export default function CV() {
             </div>
 
             {/* Skills */}
-            <div className="space-y-8">
+            <div className="space-y-8 mb-12">
               <div>
-                <h2 className="text-2xl font-bold mb-4">{content[language].cv.skills.title[language]}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">{content[language].cv.skills.programming[language]}</h3>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>Python, JavaScript, C/C++</li>
-                      <li>SQL, NoSQL</li>
-                      <li>HTML/CSS</li>
+                <h2 className="text-2xl font-bold mb-6 text-gray-900">{content[language].cv.skills.title[language]}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="border border-gray-200 p-6 rounded-sm">
+                    <h3 className="text-lg font-medium mb-4 text-gray-900 border-b border-gray-200 pb-2">{content[language].cv.skills.programming[language]}</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Langages</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Python</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">JavaScript</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">C/C++</Badge>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Bases de données</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">SQL</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">NoSQL</Badge>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Web</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">HTML/CSS</Badge>
+                        </div>
+                      </li>
                     </ul>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">{content[language].cv.skills.technologies[language]}</h3>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>IoT (Arduino, Raspberry Pi)</li>
-                      <li>Cloud (AWS, Azure)</li>
-                      <li>Web (React, Node.js)</li>
-                      <li>DevOps (Docker, Kubernetes)</li>
+                  <div className="border border-gray-200 p-6 rounded-sm">
+                    <h3 className="text-lg font-medium mb-4 text-gray-900 border-b border-gray-200 pb-2">{content[language].cv.skills.technologies[language]}</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">IoT</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Arduino</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Raspberry Pi</Badge>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Cloud</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">AWS</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Azure</Badge>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Développement Web</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">React</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Node.js</Badge>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">DevOps</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Docker</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Kubernetes</Badge>
+                        </div>
+                      </li>
                     </ul>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">{content[language].cv.skills.tools[language]}</h3>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>Git, GitHub</li>
-                      <li>Jira, Confluence</li>
-                      <li>VS Code, IntelliJ</li>
+                  <div className="border border-gray-200 p-6 rounded-sm">
+                    <h3 className="text-lg font-medium mb-4 text-gray-900 border-b border-gray-200 pb-2">{content[language].cv.skills.tools[language]}</h3>
+                    <ul className="space-y-4">
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Version Control</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Git</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">GitHub</Badge>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">Gestion de Projet</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Jira</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">Confluence</Badge>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="text-sm font-medium text-gray-600 uppercase tracking-wide">IDE</span>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">VS Code</Badge>
+                          <Badge variant="outline" className="bg-white text-gray-700 border-gray-300">IntelliJ</Badge>
+                        </div>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -283,6 +333,51 @@ export default function CV() {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 text-center max-w-2xl mx-auto"
+        >
+          <h3 className="text-xl font-medium text-gray-900 mb-4">Intéressé par des projets innovants ?</h3>
+          <p className="text-gray-600 mb-6">
+            Je suis toujours ouvert à discuter de nouvelles opportunités et collaborations dans le domaine de l'innovation technologique.
+          </p>
+          <div className="flex justify-center gap-4">
+            <Button 
+              variant="outline"
+              className="flex items-center gap-2 border-gray-300 hover:border-blue-500 hover:text-blue-500"
+              onClick={() => window.location.href = 'mailto:taoujouet@gmail.com'}
+            >
+              <Mail className="h-4 w-4" />
+              taoujouet@gmail.com
+            </Button>
+            <Button 
+              variant="outline"
+              className="flex items-center gap-2 border-gray-300 hover:border-blue-500 hover:text-blue-500"
+              onClick={() => window.open('https://linkedin.com/in/taojouet', '_blank')}
+            >
+              <Linkedin className="h-4 w-4" />
+              LinkedIn
+            </Button>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-8"
+        >
+          <Button 
+            onClick={handlePrint} 
+            className="bg-[#3B82F6] hover:bg-[#3B82F6]/90 text-white px-6 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+          >
+            <Printer className="mr-2 h-4 w-4" />
+            {t.buttons.print}
+          </Button>
+        </motion.div>
       </div>
 
       <style jsx global>{`

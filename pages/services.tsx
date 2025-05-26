@@ -93,7 +93,7 @@ export default function Services() {
                     className="w-full border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6]/10"
                     asChild
                   >
-                    <Link href="/contact">
+                    <Link href="/contact?type=quote">
                       {t.cta}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
@@ -117,7 +117,7 @@ export default function Services() {
               {t.contact.description}
             </p>
             <Button asChild size="lg" className="bg-[#FB923C] hover:bg-[#FB923C]/90">
-              <Link href="/contact">
+              <Link href="/contact?type=quote">
                 {t.contact.button}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

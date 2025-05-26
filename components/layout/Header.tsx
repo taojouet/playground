@@ -38,10 +38,10 @@ export default function Header() {
 
   const navItems = [
     { name: t.home, path: '/' },
+    { name: t.cv, path: '/cv' },
     { name: t.portfolio, path: '/portfolio' },
     { name: t.services, path: '/services' },
     { name: t.blog, path: '/blog' },
-    { name: t.cv, path: '/cv' },
     { name: t.contact, path: '/contact' },
   ];
 
