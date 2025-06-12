@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
+import { content } from '@/data/content';
 
 type ResponseData = {
   success: boolean;
@@ -26,11 +27,14 @@ export default async function handler(
     console.log('SMTP_USER:', process.env.SMTP_USER);
     console.log('SMTP_FROM:', process.env.SMTP_FROM);
     console.log('CONTACT_EMAIL:', process.env.CONTACT_EMAIL);
-    console.log('SMTP_PASSWORD is set:', !!process.env.SMTP_PASSWORD);
+    console.log('SMTP_PASSWORD length:', process.env.SMTP_PASSWORD?.length);
     console.log('================================');
 
     const { name, email, type, company, phone, subject, message, lang } = req.body;
     language = (lang as Language) || 'fr';
+
+    // Récupération des traductions
+    const t = content[language].contact;
 
     // Validation des champs
     if (!name || !email || !subject || !message) {
@@ -59,15 +63,10 @@ export default async function handler(
 
     // Configuration du transporteur d'emails
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: true,
+      service: 'gmail',
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
-      },
-      tls: {
-        rejectUnauthorized: false
       },
       debug: true,
       logger: true
@@ -76,12 +75,7 @@ export default async function handler(
     // Vérification de la connexion
     try {
       console.log('Attempting to verify SMTP connection...');
-      console.log('Using SMTP configuration:', {
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
-        user: process.env.SMTP_USER,
-        secure: true
-      });
+      console.log('Using Gmail SMTP configuration');
       await transporter.verify();
       console.log('SMTP connection verified successfully');
     } catch (error) {
@@ -96,22 +90,21 @@ export default async function handler(
 
     // Préparation du contenu de l'email
     const emailContent = {
-      from: {
-        name: 'Tao Jouet',
-        address: process.env.SMTP_FROM || ''
-      },
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: process.env.CONTACT_EMAIL,
       subject: type === 'quote' 
-        ? `[Demande de devis] ${subject}`
-        : `[Contact Form] ${subject}`,
+        ? `[${language === 'fr' ? 'Demande de devis' : 'Quote Request'}] ${subject}`
+        : `[${language === 'fr' ? 'Formulaire de contact' : 'Contact Form'}] ${subject}`,
       html: `
-        <h2>${type === 'quote' ? 'Nouvelle demande de devis' : 'Nouveau message de contact'}</h2>
-        <p><strong>Nom:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        ${company ? `<p><strong>Entreprise:</strong> ${company}</p>` : ''}
-        ${phone ? `<p><strong>Téléphone:</strong> ${phone}</p>` : ''}
-        <p><strong>Sujet:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
+        <h2>${type === 'quote' 
+          ? (language === 'fr' ? 'Nouvelle demande de devis' : 'New quote request')
+          : (language === 'fr' ? 'Nouveau message de contact' : 'New contact message')}</h2>
+        <p><strong>${language === 'fr' ? 'Nom' : 'Name'}:</strong> ${name}</p>
+        <p><strong>${language === 'fr' ? 'Email' : 'Email'}:</strong> ${email}</p>
+        ${company ? `<p><strong>${language === 'fr' ? 'Entreprise' : 'Company'}:</strong> ${company}</p>` : ''}
+        ${phone ? `<p><strong>${language === 'fr' ? 'Téléphone' : 'Phone'}:</strong> ${phone}</p>` : ''}
+        <p><strong>${language === 'fr' ? 'Sujet' : 'Subject'}:</strong> ${subject}</p>
+        <p><strong>${language === 'fr' ? 'Message' : 'Message'}:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
     };
@@ -119,6 +112,8 @@ export default async function handler(
     // Envoi de l'email
     try {
       console.log('Attempting to send email...');
+      console.log('From:', emailContent.from);
+      console.log('To:', emailContent.to);
       await transporter.sendMail(emailContent);
       console.log('Email sent successfully');
     } catch (error) {
@@ -133,10 +128,7 @@ export default async function handler(
 
     // Email de confirmation
     const confirmationEmail = {
-      from: {
-        name: 'Tao Jouet',
-        address: process.env.SMTP_FROM || ''
-      },
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: email,
       subject: type === 'quote'
         ? language === 'fr'

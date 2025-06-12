@@ -7,6 +7,7 @@ import { LanguageContext } from '@/contexts/LanguageContext';
 import { content } from '@/data/content';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
+import { Certifications } from '@/components/Certifications';
 
 export default function CV() {
   const { language } = useContext(LanguageContext);
@@ -255,13 +256,15 @@ export default function CV() {
                   <div key={index} className="relative pl-6 border-l-2 border-blue-electric">
                     <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-electric"></div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start">
-                      <h4 className="text-lg font-medium text-blue-dark print:text-base">{edu.degree}</h4>
+                      <div>
+                        <h4 className="text-lg font-medium text-blue-dark print:text-base">{edu.degree}</h4>
+                        <p className="text-text-secondary print:text-sm mt-1">{edu.institution}</p>
+                      </div>
                       <div className="flex items-center gap-2 text-text-secondary print:text-sm font-medium mt-1 sm:mt-0">
                         <Calendar className="h-4 w-4" />
                         <span>{edu.year}</span>
                       </div>
                     </div>
-                    <p className="text-text-secondary print:text-sm mt-1">{edu.institution}</p>
                   </div>
                 ))}
               </div>
@@ -271,65 +274,43 @@ export default function CV() {
             <div className="mb-8 print:mb-4">
               <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-4 print:text-lg">{t.sections.certifications}</h3>
               <div className="space-y-6">
-                <div>
-                  <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.google.title}</h4>
-                  <ul className="list-disc list-inside space-y-1">
-                    {content[language].cv.certifications.google.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.semrush.title}</h4>
-                  <ul className="list-disc list-inside space-y-1">
-                    {content[language].cv.certifications.semrush.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.hubspot.title}</h4>
-                  <ul className="list-disc list-inside space-y-1">
-                    {content[language].cv.certifications.hubspot.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.ademe.title}</h4>
-                  <ul className="list-disc list-inside space-y-1">
-                    {content[language].cv.certifications.ademe.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.sulitest.title}</h4>
-                  <ul className="list-disc list-inside space-y-1">
-                    {content[language].cv.certifications.sulitest.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold mb-2">{content[language].cv.certifications.anssi.title}</h4>
-                  <ul className="list-disc list-inside space-y-1">
-                    {content[language].cv.certifications.anssi.items.map((item, index) => (
-                      <li key={index}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+                {Object.entries(content[language].cv.certifications).map(([key, section]) => {
+                  if (key === 'title') return null;
+                  const certSection = section as { title: string; color: string; items: string[] };
+                  return (
+                    <div key={key} className={`p-4 rounded-lg border ${certSection.color}`}>
+                      <h4 className="text-lg font-semibold mb-2">{certSection.title}</h4>
+                      <ul className="list-disc list-inside space-y-1">
+                        {certSection.items.map((item: string, index: number) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
             {/* Languages */}
-            <div>
+            <div className="mb-8 print:mb-4">
               <h3 className="text-xl font-semibold text-blue-dark border-b border-gray-200 pb-2 mb-4 print:text-lg">{t.sections.languages}</h3>
               <ul className="list-disc list-inside space-y-1">
                 <li>Français (Natif)</li>
                 <li>Anglais (Courant)</li>
                 <li>Espagnol (Intermédiaire)</li>
               </ul>
+            </div>
+
+            {/* Print and Download Buttons */}
+            <div className="flex justify-center gap-4 mt-8 print:hidden">
+              <Button onClick={handlePrint} variant="outline" className="flex items-center gap-2">
+                <Printer className="h-4 w-4" />
+                {t.buttons.print}
+              </Button>
+              <Button variant="outline" className="flex items-center gap-2">
+                <Download className="h-4 w-4" />
+                {t.buttons.download}
+              </Button>
             </div>
           </motion.div>
         </div>

@@ -63,7 +63,10 @@ export default function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ContactForm defaultType={type === 'quote' ? 'quote' : 'contact'} />
+                <ContactForm 
+                  defaultType={type === 'quote' ? 'quote' : 'contact'} 
+                  language={language}
+                />
               </CardContent>
             </Card>
           </motion.div>
