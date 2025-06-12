@@ -92,8 +92,8 @@ export const content = {
           en: "Technical Skills"
         },
         programming: {
-          fr: "Langages de Programmation",
-          en: "Programming Languages"
+          fr: "Programmation",
+          en: "Programming"
         },
         technologies: {
           fr: "Technologies",
@@ -150,7 +150,7 @@ export const content = {
           ]
         },
         synox: {
-          title: 'Chef de projet IoT / Développeur',
+          title: 'Chef de projet IoT / Développeur (Alternance)',
           location: 'Montpellier',
           date: 'Octobre 2020 à octobre 2024',
           responsibilities: [
@@ -192,7 +192,7 @@ export const content = {
         },
         {
           degree: 'Licence Pro - Systèmes Embarqués',
-          institution: 'Pôle Formation IJIMM Occitanie -  - Montpellier, France',
+          institution: 'Pôle Formation UIMM Occitanie - Montpellier, France',
           year: '2020 - 2021'
         },
         {
@@ -210,6 +210,7 @@ export const content = {
         title: "Certifications",
         google: {
           title: "Google",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Google Digital Academy (Skillshop) : AI-Powered Shopping ads Certification (2025)",
             "Google Digital Academy : Google Analytics Certification (2025)"
@@ -217,6 +218,7 @@ export const content = {
         },
         semrush: {
           title: "Semrush",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Cours de SEO axé sur le contenu avec Brian Dean (2025)",
             "GA4 pour le SEO — Comment les données aident les entreprises à se développer avec Jeff Sauer (2025)",
@@ -226,24 +228,28 @@ export const content = {
         },
         hubspot: {
           title: "Hubspot",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Inbound Marketing Certification (2025)"
           ]
         },
         ademe: {
           title: "ADEME",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Low-Carbon Transition & Strategy Certificate (2025)"
           ]
         },
         sulitest: {
           title: "Sulitest",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Sustainability knowledge certificate (2025)"
           ]
         },
         anssi: {
           title: "ANSSI",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Cybersecurity Fundamentals (2023)"
           ]
@@ -256,27 +262,35 @@ export const content = {
     contact: {
       pageTitle: 'Contact',
       pageDescription: 'Contactez Tao Jouet, Chef de projet & Expert IoT pour discuter de vos projets IoT et de développement logiciel.',
-      title: 'Contactez-moi',
-      subtitle: 'Vous avez un projet ou une question ? N\'hésitez pas à me contacter via le formulaire ci-dessous ou directement par email.',
+      title: 'Contact',
+      subtitle: 'N\'hésitez pas à me contacter pour discuter de votre projet',
       form: {
         title: 'Formulaire de contact',
         description: 'Remplissez le formulaire ci-dessous pour me contacter directement',
-        labels: {
-          name: 'Nom',
-          email: 'Email',
-          message: 'Message'
-        },
-        placeholders: {
-          name: 'Votre nom',
-          email: 'votre.email@exemple.com',
-          message: 'Votre message...'
-        },
-        submit: 'Envoyer',
-        submitting: 'Envoi en cours...',
+        type: 'Type de demande',
+        contact: 'Contact',
+        quote: 'Demande de devis',
+        name: 'Nom',
+        email: 'Email',
+        company: 'Entreprise',
+        phone: 'Téléphone',
+        subject: 'Sujet',
+        message: 'Message',
+        submit: 'Envoyer le message',
+        requestQuote: 'Demander un devis',
+        sending: 'Envoi en cours...',
         successTitle: 'Message envoyé',
-        successMessage: 'Merci pour votre message ! Je vous répondrai dans les plus brefs délais.',
         errorTitle: 'Erreur',
-        errorMessage: 'Un problème est survenu lors de l\'envoi de votre message. Veuillez réessayer.'
+        typeLabel: 'Type de demande',
+        selectTypePlaceholder: 'Sélectionnez le type',
+        contactOption: 'Contact',
+        quoteOption: 'Demande de devis',
+        namePlaceholder: 'Votre nom',
+        emailPlaceholder: 'Votre email',
+        companyPlaceholder: 'Nom de votre entreprise (facultatif)',
+        phonePlaceholder: 'Votre téléphone (facultatif)',
+        subjectPlaceholder: 'Sujet',
+        messagePlaceholder: 'Votre message'
       },
       quote: {
         title: 'Demande de devis',
@@ -476,8 +490,8 @@ export const content = {
           en: "Technical Skills"
         },
         programming: {
-          fr: "Langages de Programmation",
-          en: "Programming Languages"
+          fr: "Programmation",
+          en: "Programming"
         },
         technologies: {
           fr: "Technologies",
@@ -534,7 +548,7 @@ export const content = {
           ]
         },
         synox: {
-          title: 'IoT Project Manager / Developer',
+          title: 'IoT Project Manager / Developer (Work-Study)',
           location: 'Montpellier, France',
           date: 'October 2020 to October 2024',
           responsibilities: [
@@ -576,7 +590,7 @@ export const content = {
         },
         {
           degree: 'Professional License - Embedded Systems',
-          institution: 'Pôle Formation IJIMM Occitanie -  - Montpellier, France',
+          institution: 'Pôle Formation UIMM Occitanie - Montpellier, France',
           year: '2020 - 2021'
         },
         {
@@ -594,40 +608,46 @@ export const content = {
         title: "Certifications",
         google: {
           title: "Google",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
-            "Google Digital Academy (Skillshop): AI-Powered Shopping ads Certification (2025)",
-            "Google Digital Academy: Google Analytics Certification (2025)"
+            "Google Digital Academy (Skillshop) : AI-Powered Shopping ads Certification (2025)",
+            "Google Digital Academy : Google Analytics Certification (2025)"
           ]
         },
         semrush: {
           title: "Semrush",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
-            "Content-Focused SEO Course with Brian Dean (2025)",
-            "GA4 for SEO — How Data Helps Businesses Grow with Jeff Sauer (2025)",
+            "Content-focused SEO course with Brian Dean (2025)",
+            "GA4 for SEO — How data helps businesses grow with Jeff Sauer (2025)",
             "Advanced Content Marketing with Brian Dean (2025)",
-            "SEO Principles: An Essential Guide for Beginners (2025)"
+            "SEO Principles: An essential guide for beginners (2025)"
           ]
         },
         hubspot: {
           title: "Hubspot",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Inbound Marketing Certification (2025)"
           ]
         },
         ademe: {
           title: "ADEME",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Low-Carbon Transition & Strategy Certificate (2025)"
           ]
         },
         sulitest: {
           title: "Sulitest",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Sustainability knowledge certificate (2025)"
           ]
         },
         anssi: {
           title: "ANSSI",
+          color: "bg-[#1E293B]/5 text-[#1E293B] border-[#1E293B]/10",
           items: [
             "Cybersecurity Fundamentals (2023)"
           ]
@@ -640,27 +660,35 @@ export const content = {
     contact: {
       pageTitle: 'Contact',
       pageDescription: 'Contact Tao Jouet, Project Manager & IoT Expert to discuss your IoT and software development projects.',
-      title: 'Contact Me',
-      subtitle: 'Have a project or question? Feel free to contact me using the form below or directly via email.',
+      title: 'Contact',
+      subtitle: 'Feel free to contact me to discuss your project',
       form: {
         title: 'Contact Form',
         description: 'Fill out the form below to contact me directly',
-        labels: {
-          name: 'Name',
-          email: 'Email',
-          message: 'Message'
-        },
-        placeholders: {
-          name: 'Your name',
-          email: 'your.email@example.com',
-          message: 'Your message...'
-        },
-        submit: 'Send',
-        submitting: 'Sending...',
+        type: 'Request type',
+        contact: 'Contact',
+        quote: 'Quote request',
+        name: 'Name',
+        email: 'Email',
+        company: 'Company',
+        phone: 'Phone',
+        subject: 'Subject',
+        message: 'Message',
+        submit: 'Send message',
+        requestQuote: 'Request a quote',
+        sending: 'Sending...',
         successTitle: 'Message sent',
-        successMessage: 'Thank you for your message! I will get back to you as soon as possible.',
         errorTitle: 'Error',
-        errorMessage: 'An error occurred while sending your message. Please try again.'
+        typeLabel: 'Request type',
+        selectTypePlaceholder: 'Select type',
+        contactOption: 'Contact',
+        quoteOption: 'Quote request',
+        namePlaceholder: 'Your name',
+        emailPlaceholder: 'Your email',
+        companyPlaceholder: 'Your company name (optional)',
+        phonePlaceholder: 'Your phone (optional)',
+        subjectPlaceholder: 'Subject',
+        messagePlaceholder: 'Your message'
       },
       quote: {
         title: 'Request a Quote',

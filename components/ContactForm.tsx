@@ -10,71 +10,69 @@ import { useContext } from 'react';
 import { LanguageContext } from '@/contexts/LanguageContext';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
+import { content } from '@/data/content';
 
 const formSchema = z.object({
-  name: z.string().min(2, {
-    message: 'Le nom doit contenir au moins 2 caractères',
-  }),
-  email: z.string().email({
-    message: 'Veuillez entrer une adresse email valide',
-  }),
-  type: z.enum(['contact', 'quote'], {
-    required_error: 'Veuillez sélectionner le type de demande',
-  }),
+  type: z.enum(['contact', 'quote']),
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Invalid email address'),
   company: z.string().optional(),
   phone: z.string().optional(),
-  subject: z.string().min(5, {
-    message: 'Le sujet doit contenir au moins 5 caractères',
-  }),
-  message: z.string().min(10, {
-    message: 'Le message doit contenir au moins 10 caractères',
-  }),
+  subject: z.string().min(2, 'Subject must be at least 2 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
 interface ContactFormProps {
   defaultType?: 'contact' | 'quote';
+  language: 'fr' | 'en';
 }
 
-export function ContactForm({ defaultType = 'contact' }: ContactFormProps) {
-  const { language } = useContext(LanguageContext);
+export function ContactForm({ defaultType = 'contact', language }: ContactFormProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formType, setFormType] = useState<'contact' | 'quote'>(defaultType);
 
+  const t = content[language].contact.form;
+
   const {
     register,
     handleSubmit,
+    formState: { errors },
     reset,
     setValue,
-    formState: { errors },
+    watch,
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       type: defaultType,
+      name: '',
+      email: '',
+      company: '',
+      phone: '',
+      subject: '',
+      message: '',
     },
   });
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...data,
-          language,
-        }),
+        body: JSON.stringify({ ...data, lang: language }),
       });
 
       const result = await response.json();
 
       if (result.success) {
         toast({
-          title: language === 'fr' ? 'Message envoyé' : 'Message sent',
+          title: t.successTitle,
           description: result.message,
         });
         reset();
@@ -85,8 +83,8 @@ export function ContactForm({ defaultType = 'contact' }: ContactFormProps) {
     } catch (error) {
       toast({
         variant: 'destructive',
-        title: language === 'fr' ? 'Erreur' : 'Error',
-        description: error instanceof Error ? error.message : 'Une erreur est survenue',
+        title: t.errorTitle,
+        description: error instanceof Error ? error.message : 'An error occurred',
       });
     } finally {
       setIsSubmitting(false);
@@ -98,110 +96,118 @@ export function ContactForm({ defaultType = 'contact' }: ContactFormProps) {
       <div className="space-y-4">
         <div>
           <Label htmlFor="type" className="text-[#1E293B]">
-            {language === 'fr' ? 'Type de demande' : 'Request type'}
+            {t.type}
           </Label>
           <Select
-            defaultValue={defaultType}
+            defaultValue={formType}
             onValueChange={(value: 'contact' | 'quote') => {
               setFormType(value);
               setValue('type', value);
             }}
           >
             <SelectTrigger>
-              <SelectValue placeholder={language === 'fr' ? 'Sélectionnez le type' : 'Select type'} />
+              <SelectValue placeholder={t.selectTypePlaceholder} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="contact">
-                {language === 'fr' ? 'Contact' : 'Contact'}
-              </SelectItem>
-              <SelectItem value="quote">
-                {language === 'fr' ? 'Demande de devis' : 'Quote request'}
-              </SelectItem>
+              <SelectItem value="contact">{t.contact}</SelectItem>
+              <SelectItem value="quote">{t.quote}</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div>
+          <Label htmlFor="name" className="text-[#1E293B]">
+            {t.name}
+          </Label>
           <Input
             {...register('name')}
-            placeholder={language === 'fr' ? 'Votre nom' : 'Your name'}
+            placeholder={t.namePlaceholder}
             className={errors.name ? 'border-red-500' : ''}
           />
           {errors.name && (
-            <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
           )}
         </div>
 
         <div>
+          <Label htmlFor="email" className="text-[#1E293B]">
+            {t.email}
+          </Label>
           <Input
             {...register('email')}
             type="email"
-            placeholder={language === 'fr' ? 'Votre email' : 'Your email'}
+            placeholder={t.emailPlaceholder}
             className={errors.email ? 'border-red-500' : ''}
           />
           {errors.email && (
-            <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
           )}
         </div>
 
         {formType === 'quote' && (
-          <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
+              <Label htmlFor="company" className="text-[#1E293B]">
+                {t.company}
+              </Label>
               <Input
                 {...register('company')}
-                placeholder={language === 'fr' ? 'Nom de votre entreprise (facultatif)' : 'Your company name (optional)'}
+                placeholder={t.companyPlaceholder}
               />
             </div>
 
             <div>
+              <Label htmlFor="phone" className="text-[#1E293B]">
+                {t.phone}
+              </Label>
               <Input
                 {...register('phone')}
                 type="tel"
-                placeholder={language === 'fr' ? 'Votre téléphone (facultatif)' : 'Your phone (optional)'}
+                placeholder={t.phonePlaceholder}
               />
             </div>
-          </>
+          </div>
         )}
 
         <div>
+          <Label htmlFor="subject" className="text-[#1E293B]">
+            {t.subject}
+          </Label>
           <Input
             {...register('subject')}
-            placeholder={language === 'fr' ? 'Sujet' : 'Subject'}
+            placeholder={t.subjectPlaceholder}
             className={errors.subject ? 'border-red-500' : ''}
           />
           {errors.subject && (
-            <p className="text-sm text-red-500 mt-1">{errors.subject.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>
           )}
         </div>
 
         <div>
+          <Label htmlFor="message" className="text-[#1E293B]">
+            {t.message}
+          </Label>
           <Textarea
             {...register('message')}
-            placeholder={language === 'fr' ? 'Votre message' : 'Your message'}
+            placeholder={t.messagePlaceholder}
             className={`min-h-[150px] ${errors.message ? 'border-red-500' : ''}`}
           />
           {errors.message && (
-            <p className="text-sm text-red-500 mt-1">{errors.message.message}</p>
+            <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
           )}
         </div>
       </div>
 
       <Button
         type="submit"
-        className="w-full"
         disabled={isSubmitting}
+        className="w-full"
       >
         {isSubmitting
-          ? language === 'fr'
-            ? 'Envoi en cours...'
-            : 'Sending...'
+          ? t.sending
           : formType === 'quote'
-          ? language === 'fr'
-            ? 'Demander un devis'
-            : 'Request a quote'
-          : language === 'fr'
-          ? 'Envoyer le message'
-          : 'Send message'}
+          ? t.requestQuote
+          : t.submit}
       </Button>
     </form>
   );
