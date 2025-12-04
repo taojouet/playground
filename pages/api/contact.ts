@@ -9,6 +9,52 @@ type ResponseData = {
 
 type Language = 'fr' | 'en';
 
+// --- Rate limiting simple en mémoire (par IP) ---
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const RATE_LIMIT_MAX_REQUESTS = 5; // 5 requêtes par fenêtre
+
+type RateLimitInfo = {
+  count: number;
+  firstRequestTime: number;
+};
+
+const ipRequestCounts = new Map<string, RateLimitInfo>();
+
+function getClientIp(req: NextApiRequest): string {
+  const xff = req.headers['x-forwarded-for'];
+  if (typeof xff === 'string' && xff.length > 0) {
+    return xff.split(',')[0].trim();
+  }
+  if (Array.isArray(xff) && xff.length > 0) {
+    return xff[0].split(',')[0].trim();
+  }
+  return (req.socket.remoteAddress || 'unknown').toString();
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const info = ipRequestCounts.get(ip);
+
+  if (!info) {
+    ipRequestCounts.set(ip, { count: 1, firstRequestTime: now });
+    return false;
+  }
+
+  if (now - info.firstRequestTime > RATE_LIMIT_WINDOW_MS) {
+    // Nouvelle fenêtre
+    ipRequestCounts.set(ip, { count: 1, firstRequestTime: now });
+    return false;
+  }
+
+  if (info.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return true;
+  }
+
+  info.count += 1;
+  ipRequestCounts.set(ip, info);
+  return false;
+}
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
@@ -20,6 +66,17 @@ export default async function handler(
   let language: Language = 'fr';
 
   try {
+    const clientIp = getClientIp(req);
+    if (isRateLimited(clientIp)) {
+      return res.status(429).json({
+        success: false,
+        message:
+          language === 'fr'
+            ? 'Trop de demandes depuis votre adresse IP. Merci de réessayer plus tard.'
+            : 'Too many requests from your IP address. Please try again later.',
+      });
+    }
+
     // Log détaillé des variables d'environnement
     console.log('=== Environment Variables Check ===');
     console.log('SMTP_HOST:', process.env.SMTP_HOST);
@@ -30,11 +87,73 @@ export default async function handler(
     console.log('SMTP_PASSWORD length:', process.env.SMTP_PASSWORD?.length);
     console.log('================================');
 
-    const { name, email, type, company, phone, subject, message, lang } = req.body;
+    const { name, email, type, company, phone, subject, message, lang, honeypot, captchaToken } = req.body;
     language = (lang as Language) || 'fr';
 
     // Récupération des traductions
     const t = content[language].contact;
+
+    // Vérification reCAPTCHA
+    if (process.env.RECAPTCHA_SECRET_KEY) {
+      if (!captchaToken || typeof captchaToken !== 'string') {
+        return res.status(400).json({
+          success: false,
+          message:
+            language === 'fr'
+              ? 'Vérification CAPTCHA manquante ou invalide.'
+              : 'Missing or invalid CAPTCHA verification.',
+        });
+      }
+
+      try {
+        const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams({
+            secret: process.env.RECAPTCHA_SECRET_KEY,
+            response: captchaToken,
+          }),
+        });
+
+        const verifyData = (await verifyRes.json()) as { success: boolean; score?: number; action?: string };
+
+        if (!verifyData.success) {
+          console.warn('reCAPTCHA verification failed:', verifyData);
+          return res.status(400).json({
+            success: false,
+            message:
+              language === 'fr'
+                ? 'La vérification CAPTCHA a échoué. Merci de réessayer.'
+                : 'CAPTCHA verification failed. Please try again.',
+          });
+        }
+      } catch (error) {
+        console.error('Error verifying reCAPTCHA:', error);
+        return res.status(500).json({
+          success: false,
+          message:
+            language === 'fr'
+              ? 'Erreur lors de la vérification du CAPTCHA.'
+              : 'Error while verifying CAPTCHA.',
+        });
+      }
+    } else {
+      console.warn('RECAPTCHA_SECRET_KEY is not set. Skipping CAPTCHA verification on backend.');
+    }
+
+    // Protection anti-spam basique : champ honeypot caché
+    if (typeof honeypot === 'string' && honeypot.trim().length > 0) {
+      // On fait semblant que tout s'est bien passé pour ne pas aider les bots à s'adapter
+      return res.status(200).json({
+        success: true,
+        message:
+          language === 'fr'
+            ? 'Votre message a été envoyé avec succès'
+            : 'Your message has been sent successfully',
+      });
+    }
 
     // Validation des champs
     if (!name || !email || !subject || !message) {
@@ -43,6 +162,28 @@ export default async function handler(
         message: language === 'fr' 
           ? 'Veuillez remplir tous les champs requis'
           : 'Please fill in all required fields'
+      });
+    }
+
+    // Filtre anti-spam simple : bloque les messages trop "aléatoires"
+    const normalizedMessage = String(message).trim();
+    const normalizedSubject = String(subject).trim();
+
+    const hasSpaceInMessage = /\s/.test(normalizedMessage);
+    const hasVowelInMessage = /[aeiouyàâäéèêëïîôöùûüAEIOUY]/.test(normalizedMessage);
+
+    // Si le message est très court OU sans espace OU sans voyelle, on le considère comme suspect
+    if (
+      normalizedMessage.length < 20 ||
+      !hasSpaceInMessage ||
+      !hasVowelInMessage
+    ) {
+      return res.status(400).json({
+        success: false,
+        message:
+          language === 'fr'
+            ? 'Votre message semble incomplet. Merci de détailler un peu plus votre demande.'
+            : 'Your message seems incomplete. Please provide a bit more detail.',
       });
     }
 

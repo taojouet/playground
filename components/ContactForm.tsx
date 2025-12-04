@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { useContext } from 'react';
 import { LanguageContext } from '@/contexts/LanguageContext';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { content } from '@/data/content';
@@ -20,6 +21,8 @@ const formSchema = z.object({
   phone: z.string().optional(),
   subject: z.string().min(2, 'Subject must be at least 2 characters'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
+  // Champ "honeypot" utilisé pour piéger les bots (ne doit jamais être rempli par un humain)
+  honeypot: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -33,6 +36,9 @@ export function ContactForm({ defaultType = 'contact', language }: ContactFormPr
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formType, setFormType] = useState<'contact' | 'quote'>(defaultType);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const t = content[language].contact.form;
 
@@ -57,6 +63,24 @@ export function ContactForm({ defaultType = 'contact', language }: ContactFormPr
   });
 
   const onSubmit = async (data: FormData) => {
+    if (recaptchaSiteKey) {
+      // En prod, si un sitekey est défini, on exige un token valide
+      if (!captchaToken) {
+        toast({
+          variant: 'destructive',
+          title: t.errorTitle,
+          description:
+            language === 'fr'
+              ? 'Veuillez valider le CAPTCHA avant d\'envoyer le formulaire.'
+              : 'Please validate the CAPTCHA before submitting the form.',
+        });
+        return;
+      }
+    } else {
+      // En dev ou si non configuré, on laisse passer mais on log un warning
+      console.warn('NEXT_PUBLIC_RECAPTCHA_SITE_KEY is not set. Skipping CAPTCHA verification on frontend.');
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -65,7 +89,7 @@ export function ContactForm({ defaultType = 'contact', language }: ContactFormPr
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...data, lang: language }),
+        body: JSON.stringify({ ...data, lang: language, captchaToken }),
       });
 
       const result = await response.json();
@@ -93,6 +117,19 @@ export function ContactForm({ defaultType = 'contact', language }: ContactFormPr
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Honeypot anti-spam : champ caché que seuls les bots remplissent */}
+      <div className="hidden" aria-hidden="true">
+        <Label htmlFor="website" className="text-[#1E293B]">
+          Website
+        </Label>
+        <Input
+          id="website"
+          type="text"
+          autoComplete="off"
+          tabIndex={-1}
+          {...register('honeypot')}
+        />
+      </div>
       <div className="space-y-4">
         <div>
           <Label htmlFor="type" className="text-[#1E293B]">
@@ -209,6 +246,16 @@ export function ContactForm({ defaultType = 'contact', language }: ContactFormPr
           ? t.requestQuote
           : t.submit}
       </Button>
+
+      {/* CAPTCHA : uniquement affiché si une clé publique est configurée */}
+      {recaptchaSiteKey && (
+        <div className="flex justify-center">
+          <ReCAPTCHA
+            sitekey={recaptchaSiteKey}
+            onChange={(token) => setCaptchaToken(token)}
+          />
+        </div>
+      )}
     </form>
   );
 } 
