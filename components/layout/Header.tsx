@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Button } from '@/components/ui/button';
 import { LanguageContext } from '@/contexts/LanguageContext';
 import { content } from '@/data/content';
-import { Menu, X, Languages, Globe } from 'lucide-react';
+import { Menu, X, Languages, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   DropdownMenu,
@@ -97,6 +97,18 @@ export default function Header() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="ml-2 text-[#64748B] hover:text-red-500"
+              title="Se déconnecter"
+              onClick={async () => {
+                await fetch('/api/auth/logout', { method: 'POST' });
+                router.push('/login');
+              }}
+            >
+              <LogOut className="h-5 w-5" />
+            </Button>
           </nav>
 
           {/* Mobile Menu Button */}
