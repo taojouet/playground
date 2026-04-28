@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   logLogin(username, req);
 
   const token = await createSessionToken(username);
-  const secure = process.env.NODE_ENV === 'production' ? '; Secure' : '';
+  const secure = process.env.SECURE_COOKIE === 'true' ? '; Secure' : '';
   res.setHeader(
     'Set-Cookie',
     `${COOKIE_NAME}=${token}; HttpOnly; SameSite=Lax; Max-Age=${SESSION_MAX_AGE}; Path=/${secure}`,
