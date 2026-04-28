@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(pnpm --version)",
+      "Bash(pnpm add *)",
+      "Bash(node *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); ex=d.get\\('exports',{}\\); [print\\(k,':',v\\) for k,v in ex.items\\(\\) if 'plugin' in k.lower\\(\\) or 'client' in k.lower\\(\\) or 'node' in k.lower\\(\\)]\")",
+      "Bash(pnpm next *)",
+      "Bash(tee /tmp/build-output.txt)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(pnpm rebuild *)",
+      "Bash(node-pre-gyp install *)",
+      "Bash(npx node-pre-gyp *)",
+      "Bash(npm run *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d.get\\('scripts',{}\\), indent=2\\)\\)\")",
+      "Bash(node_modules/.bin/prebuild-install)",
+      "Bash(npx node-gyp *)",
+      "Bash(node_modules/.bin/prebuild-install --verbose)",
+      "Bash(tee /tmp/build2.txt)",
+      "Bash(pnpm exec *)",
+      "Bash(./node_modules/.bin/next build *)",
+      "Bash(pnpm remove *)",
+      "Bash(npm remove *)"
+    ]
+  }
+}
